@@ -87,12 +87,14 @@ class HomeController extends Controller
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
             $mail->setFrom($request->email, $request->name);
-            $mail->addAddress('muhammadalamgir10@gmail.com', 'Contact Us form');
+
+            $mail->addAddress('mursaleen@zistravels.co.uk', 'Contact Us form');
+
             $mail->isHTML(true);
             $mail->Subject = 'Contact Form Submission';
             $mail->Body = "Name: {$validatedData['name']}<br>";
             $mail->Body .= "Email: {$validatedData['email']}<br>";
-            $mail->Body .= "Phone: {$validatedData['phone']}<br>";
+            $mail->Body .= "Phone: {$validatedData['phone']}< br>";
             $mail->Body .= "Category: {$validatedData['category']}<br>";
             $mail->Body .= "Comment: {$validatedData['comment']}<br>";
 
