@@ -16,3 +16,7 @@ Route::get('contact-us',[HomeController::class,'contact_us'])->name('home.contac
 Route::get('customer-reviews',[HomeController::class,'customer_reviews'])->name('home.customer_reviews');
 Route::get('privacy-policy',[HomeController::class,'privacy_policy'])->name('home.privacy_policy');
 Route::get('travel-tips',[HomeController::class,'travel_tips'])->name('home.travel_tips');
+
+
+Route::post('contact', [HomeController::class,'submitContactForm'])->name('contact.submit');
+Route::post('newsletter', [HomeController::class,'newsletterForm'])->name('footer.newsletter');

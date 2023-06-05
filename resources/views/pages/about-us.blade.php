@@ -14,7 +14,7 @@
                     <p><strong>Reliance Travels</strong> is the independent travel agency, providing the services since last few years. We are registered as limited company in United Kingdom <strong>(Company Registration no. 07828941).</strong></p>
                 </div>
                 <div class="col-md-5 col-sm-6">
-                    <img class="no-padding" src="assets/images/images/about-us.jpg" alt="">
+                    <img class="no-padding" src="{{asset('assets/images/images/about-us.jpg')}}" alt="">
                 </div>
                 <div class="col-xs-12 no-margin-text">
                     <h4>Our working Technique:</h4>
@@ -43,28 +43,28 @@
             <div class="container clear-padding">
                 <div class="owl-carousel" id="partner">
                     <div>
-                        <img src="assets/images/images/klm.png" alt="">
+                        <img src="{{asset('assets/images/images/klm.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/alitalia.png" alt="">
+                        <img src="{{asset('assets/images/images/alitalia.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/amirates.png" alt="">
+                        <img src="{{asset('assets/images/images/amirates.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/tap.png" alt="">
+                        <img src="{{asset('assets/images/images/tap.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/airfrance.png" alt="">
+                        <img src="{{asset('assets/images/images/airfrance.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/luftansa.png" alt="">
+                        <img src="{{asset('assets/images/images/luftansa.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/bmi.png" alt="">
+                        <img src="{{asset('assets/images/images/bmi.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/jetairways.png" alt="">
+                        <img src="{{asset('assets/images/images/jetairways.png')}}" alt="">
                     </div>
                 </div>
             </div>

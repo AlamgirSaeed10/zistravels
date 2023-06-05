@@ -4,7 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Cheap Flight | @yield('title')</title>
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
     <link href="{{asset('assets/css/blog-style.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('assets/css/jquery-ui.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/animate.min.css')}}" rel="stylesheet">
@@ -15,6 +17,7 @@
     <link href="{{asset('assets/css/flexslider.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body class="load-full-screen">
 <div id="loader" class="load-full-screen hidden-sm hidden-xs">
@@ -41,5 +44,4 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/js.js')}}"></script>
     <script src="{{asset('assets/js/homejs.js')}}"></script>
-</body>
 </html>

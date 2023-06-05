@@ -200,8 +200,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 wow slideInLeft">
                     <div class="choose-us-item text-center">
                         <div class="choose-icon">
-                            <!-- <img class="pound-sign" src="assets/images/service-icon3_yellow.png" alt="Pound"> -->
-                            <i class="fa fa-gbp fa-circle"></i>
+                            <i class="fa fa-gbp fa-circle text-white"></i>
                         </div>
                         <h4>Best Price Guarantee</h4>
                         <p style="text-align:center;">We offer the best lowest price with no comparison.</p>
@@ -242,17 +241,17 @@
 
 
                     <div class="col-grid">
-                        <div class="wrapper"> <img src="assets/images/topdestinations/LUN.jpg" alt="Last Minute Flights To Lusaka">
+                        <div class="wrapper"> <img src="{{asset('assets/images/destinations/LUN.jpg')}}" alt="Last Minute Flights To Lusaka">
                             <h5 class="location">Lusaka</h5>
                         </div>
                         <div class="body text-center">
-                            <center>
+
                                 <h5>Round Trip</h5>
 
-                                <p style=" text-align:center;">Starting From</p>
+                                <p>Starting From</p>
                                 <h3>£2084</h3>
-                                <p style=" text-align:center;" class="text-sm">21-Apr - 25-Jun</p>
-                            </center>
+                                <p>21-Apr - 25-Jun</p>
+
                         </div>
                         <div class="bottom"> <a href="/Flights-To-Lusaka">BOOK NOW</a> </div>
                     </div>
@@ -275,45 +274,7 @@
 
 
 
-                <div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-                    <h4>A PHP Error was encountered</h4>
-
-                    <p>Severity: Warning</p>
-                    <p>Message:  Invalid argument supplied for foreach()</p>
-                    <p>Filename: views/businessclass.php</p>
-                    <p>Line Number: 354</p>
-
-
-                    <p>Backtrace:</p>
-
-
-
-
-
-
-                    <p style="margin-left:10px">
-                        File: /home/www/reliancetravels.co.uk/application/views/businessclass.php<br />
-                        Line: 354<br />
-                        Function: _error_handler			</p>
-
-                    <p style="margin-left:10px">
-                        File: /home/www/reliancetravels.co.uk/application/controllers/Businessclass.php<br />
-                        Line: 77<br />
-                        Function: view			</p>
-
-
-
-
-
-
-                    <p style="margin-left:10px">
-                        File: /home/www/reliancetravels.co.uk/index.php<br />
-                        Line: 315<br />
-                        Function: require_once			</p>
-
-
-
+                <div style="height:200px;border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
 
                 </div>
             </div>

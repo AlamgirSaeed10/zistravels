@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-5 col-sm-6">
                     <br><br>
-                    <img class="no-padding"src="assets/images/images/faq.jpg" alt="">
+                    <img class="no-padding"src="{{asset('assets/images/images/faq.jpg')}}" alt="">
                 </div>
                 <div class="col-xs-12">
                     <h4 id="faq1">1. Why Should I book through Reliance Travels ?</h4>
@@ -53,28 +53,28 @@
             <div class="container clear-padding">
                 <div class="owl-carousel" id="partner">
                     <div>
-                        <img src="assets/images/images/klm.png" alt="KLM Airline">
+                        <img src="{{asset('assets/images/images/klm.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/alitalia.png" alt="Alitalia">
+                        <img src="{{asset('assets/images/images/alitalia.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/amirates.png" alt="Emirates airline">
+                        <img src="{{asset('assets/images/images/amirates.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/tap.png" alt="TAP Air Purtogal">
+                        <img src="{{asset('assets/images/images/tap.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/airfrance.png" alt="Air France">
+                        <img src="{{asset('assets/images/images/airfrance.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/luftansa.png" alt="Lufthansa">
+                        <img src="{{asset('assets/images/images/luftansa.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/bmi.png" alt="BMI">
+                        <img src="{{asset('assets/images/images/bmi.png')}}" alt="">
                     </div>
                     <div>
-                        <img src="assets/images/images/jetairways.png" alt="Jet Airways">
+                        <img src="{{asset('assets/images/images/jetairways.png')}}" alt="">
                     </div>
                 </div>
             </div>

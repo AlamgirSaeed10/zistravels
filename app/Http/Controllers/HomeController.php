@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -53,6 +56,72 @@ class HomeController extends Controller
     function blogs(){
         $title="Blogs";
         return view('pages.blogs',compact('title'));
+    }
+
+    function submitContactForm(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'category' => 'required',
+            'comment' => 'required',
+            'g-recaptcha-response' => 'required'
+        ], [
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email format.',
+            'phone.required' => 'Phone is required.',
+            'category.required' => 'Category is required.',
+            'comment.required' => 'Comment is required.',
+            'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
+        ]);
+
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'muhammadalamgir10@gmail.com';
+            $mail->Password = 'znensgwmxpgeflzi';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+            $mail->setFrom($request->email, $request->name);
+            $mail->addAddress('muhammadalamgir10@gmail.com', 'Contact Us form');
+            $mail->isHTML(true);
+            $mail->Subject = 'Contact Form Submission';
+            $mail->Body = "Name: {$validatedData['name']}<br>";
+            $mail->Body .= "Email: {$validatedData['email']}<br>";
+            $mail->Body .= "Phone: {$validatedData['phone']}<br>";
+            $mail->Body .= "Category: {$validatedData['category']}<br>";
+            $mail->Body .= "Comment: {$validatedData['comment']}<br>";
+
+            $mail->send();
+            return redirect()->back()->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Error occurred while sending the email.');
+        }
+    }
+    function newsletterForm(Request $request){
+
+        $valid = $request->validate([
+            'nemail'=>'required',
+        ]);
+        if(!$valid){
+            return redirect()->back()->with('error','Please enter a valid email to recieve the info.');
+        }
+        $data= array(
+            'NewsletterEmail' =>$request->nemail,
+        );
+
+       $insert =  DB::table('newsletter')->insert($data);
+        if($insert > 0){
+            return redirect()->back()->with('success','Thank you for contacting Zistravels.');
+        }
+        else{
+            return redirect()->back()->with('error','Unknow error has occured please try again..!');
+
+        }
     }
 
 }
