@@ -58,6 +58,22 @@ class HomeController extends Controller
         return view('pages.blogs',compact('title'));
     }
 
+    function online_search(Request $request){
+        $title = "online Search";
+
+        $departureAirport = $request->input('departure');
+        $destinationAirport = $request->input('destination');
+        $dep_date = $request->input('departure_date');
+        $ret_date = $request->input('return_date');
+
+        $flights = DB::table('flight_details')
+            ->where('flt_departure', $departureAirport)
+            ->where('flt_destination', $destinationAirport)
+            ->get();
+            return view('pages.search-results', compact('title','flights','departureAirport','destinationAirport','dep_date','ret_date'));
+    }
+
+
     function submitContactForm(Request $request){
         $validatedData = $request->validate([
             'name' => 'required',
@@ -125,5 +141,6 @@ class HomeController extends Controller
 
         }
     }
+
 
 }

@@ -16,6 +16,7 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('assets/css/flexslider.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('assets/css/search.css')}}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -44,4 +45,7 @@
     <script src="{{asset('assets/js/sticky.js')}}"></script>
     <script src="{{asset('assets/js/js.js')}}"></script>
     <script src="{{asset('assets/js/homejs.js')}}"></script>
+    <script src="{{asset('assets/js/search.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.autocomplete.min.js')}}"></script>
+    <script src="{{asset('assets/js/currency-autocomplete.js')}}"></script>
 </html>

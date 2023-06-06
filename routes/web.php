@@ -20,3 +20,6 @@ Route::get('travel-tips',[HomeController::class,'travel_tips'])->name('home.trav
 
 Route::post('contact', [HomeController::class,'submitContactForm'])->name('contact.submit');
 Route::post('newsletter', [HomeController::class,'newsletterForm'])->name('footer.newsletter');
+
+
+Route::post('onlinesearchresults', [HomeController::class,'online_search'])->name('search.online_search');

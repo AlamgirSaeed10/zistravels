@@ -1,0 +1,206 @@
+.header h2, h4 {
+    color: #07253F !important;
+    font-family: 'Droid Sans', arial, tahoma, verdana, sans-serif;
+    font-weight: 100;
+}
+.side_whybook_w_us {
+    background: #3a1b07;
+    opacity: 1;
+    height: auto;
+    margin: 20px 0 0 0;
+    padding: 20px;
+    border-radius: 0;
+}
+.booking_session {
+    background-color: rgba(35,38,61,0.4);
+    height: 420px;
+    color: #ffffff;
+    border-radius: 0 8px 8px 0;
+}
+.side_whybook_w_us h3 {
+    text-align: left !important;
+}
+.booking_session{
+	background-color: rgba(35,38,61,0.4);
+	height:420px;
+	color:#ffffff;
+	border-radius:0 8px 8px 0;
+}
+.booking_session h3{
+	color:#F90;
+	font-size:22px;
+	text-align:center;
+}
+.booking_session ul{
+	list-style:none;
+	color:#fff;
+	padding:0 0 0 55px;
+}
+.booking_session ul li{
+	line-height:35px;
+}
+.booking_session ul li i{
+	color:#F90;
+}
+.side_whybook_w_us{
+	background:#3a1b07;
+	opacity:1;
+	height:auto;
+	margin:20px 0 0 0;
+	padding:20px;
+	border-radius:0;
+}
+.side_whybook_w_us ul{
+	margin:0;
+	padding:0px;
+}
+.side_whybook_w_us h3{
+	text-align:left !important;
+}
+.dotted_border{
+	border-bottom:1px dotted #3b406d;
+	width:100%;
+	float:left;
+	margin:7px 0;
+}
+.top-margin{
+	margin: 20px 0px;
+}
+.hotel-lists{
+	margin-top: 10px;
+}
+.hotel-lists .hotel{
+	width: 100%;
+	float: left;
+	margin: 15px 0;
+    border: 1px solid #350c48;
+    box-shadow: 0 3px 4px -3px #350c48;
+}
+.hotel-lists .hotel:hover{
+	border: 1px solid #aa00f9;
+    box-shadow: 0 0 5px 0 #350c48;
+}
+.hotel-lists .hotel .htl-img-box{
+	border: 4px solid #ffd701;
+	min-width: 200px;
+	min-height: 200px;
+	overflow: hidden;
+}
+.hotel-lists .hotel .htl-img-box .htl-img{
+	width: 100%;
+	height: 200px;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	transition: all .5s;
+}
+.hotel-lists .hotel .htl-img-box:hover .htl-img,
+.hotel-lists .hotel .htl-img-box:focus .htl-img{
+  transform: scale(1.2);
+  transition: all .5s;
+}
+.hotel-lists .hotel .hotel-details{
+	padding: 10px;
+}
+.hotel-lists .hotel .hotel-details .hotel-title{
+	border-bottom: 1px solid #ffd701;
+	padding-bottom: 5px;
+}
+.hotel-lists .hotel .hotel-details .hotel-name{
+	margin: 5px 0px;
+	color: #350c48 !important;
+	font-size: 15px;
+	font-weight: 800;
+}
+.hotel-lists .hotel .hotel-details .htl_loc_details{
+	color: #015696;
+}
+.hotel-details .htl-rating{
+	margin-right: 5px;
+}
+.hotel-details .htl-rating i{
+	color: #ffd701;
+}
+.hotel-details .room-details{
+	margin: 10px 0px 0px;
+	background-color: #fffadc; 
+	padding: 5px;
+}
+.hotel-details .room-title {
+	font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    margin-top: 0px;
+}
+.hotel-details .room-title span{
+	font-size: 13px;
+}
+.room-details p{
+	font-size: 10px;
+}
+.hotel_price{
+	min-height: 208px;
+	width: 100%;
+	padding: 10px;
+	background-color: #ffdd26 ;
+	text-align: center;
+}
+.hotel_price:after{
+	content: "";
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 20px solid #ffdd26;
+    position: absolute;
+    top: 39%;
+    left: -20px;
+}
+.font-weight-700{
+	font-weight: 700 !important;
+}
+.hotel_price h1{
+	 font-size: 36px;
+	 margin-top: 10px;
+}
+.hotel-lists .price{
+	min-height: 208px;
+}
+.hotel-lists .hotel .select_room{
+	width: 100%;
+    float: left;
+    margin-top: 25px;
+}
+.hotel-lists .hotel .select_room a{
+	padding: 10px 25px;
+    background: #07253f;
+    width: 100%;
+    text-decoration: none !important;
+    color: #fff;
+}
+.hotel-lists .hotel:hover .select_room a{
+	background-color: #350c48 !important;
+}
+.hotel-lists .hotel:hover .select_room a:hover{
+	background-color: #07253f !important;
+	letter-spacing: 0.5px;
+}
+.room-info-wrapper .htl-img-box{
+	border: 4px solid #ffd701;
+	min-width: 100%;
+	min-height: auto;
+	overflow: hidden;
+}
+.room-info-wrapper .htl-img-box .htl-img{
+	width: 100%;
+	height: 200px;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	transition: all .5s;
+}
+.room-info-wrapper .htl-img-box:hover .htl-img,
+.room-info-wrapper .htl-img-box:focus .htl-img{
+  transform: scale(1.2);
+  transition: all .5s;
+}
