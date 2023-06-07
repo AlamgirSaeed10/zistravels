@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -61,16 +62,33 @@ class HomeController extends Controller
     function online_search(Request $request){
         $title = "online Search";
 
-        $departureAirport = $request->input('departure');
-        $destinationAirport = $request->input('destination');
+        // Define the validation rules
+        $validator = Validator::make($request->all(), [
+            'padults' => 'required|integer|min:1',
+            'flight_from' => 'required',
+            'flight_to' => 'required',
+            'departure_date' => 'required|date',
+            'g-recaptcha-response' =>'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $dep_date = $request->input('departure_date');
         $ret_date = $request->input('return_date');
 
+        $cabin_class = $request->input('cabin_class');
+        $flight_type = $request->input('flight_type');
+
+        $departureAirport = $request->input('flight_from');
+        $destinationAirport = $request->input('flight_to');
+
         $flights = DB::table('flight_details')
-            ->where('flt_departure', $departureAirport)
-            ->where('flt_destination', $destinationAirport)
-            ->get();
-            return view('pages.search-results', compact('title','flights','departureAirport','destinationAirport','dep_date','ret_date'));
+        ->where('DepCity', $departureAirport)
+        ->where('DestCity', $destinationAirport)
+        ->get();
+            return view('pages.search-results', compact('title','flights','departureAirport','destinationAirport','dep_date','ret_date','flight_type','cabin_class'));
     }
 
 
