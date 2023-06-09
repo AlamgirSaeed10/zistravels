@@ -14,11 +14,11 @@
                 <div class="text-center">
                     <div class="col-md-4 col-sm-4">
                         <i class="fa fa-phone"></i>
-                        <p><a href="tel:02079936068">0207 993 6068</a></p>
+                        <p><a href="tel:08003683970">0800 368 3970</a></p>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <i class="fa fa-whatsapp"></i>
-                        <p>0207 993 6224</p>
+                        <p>00000000</p>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <i class="fa fa-envelope-o"></i>

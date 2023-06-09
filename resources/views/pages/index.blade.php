@@ -159,7 +159,7 @@
                                                                                     </label>
                                                                                 </div>
                                                                                 <div class="col-xs-6 search-col-padding">
-                                                                                    <input id="adult_count" name="padults"
+                                                                                    <input id="adult_count" name="padults" value="1"
                                                                                         class="form-control quantity-padding">
                                                                                 </div>
                                                                             </div>

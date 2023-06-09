@@ -9,16 +9,16 @@
                 <div class="col-md-7 col-sm-6 no-margin-text color-text">
                     <h2>ABOUT US</h2>
                     <h4>Who we are?</h4>
-                    <p><strong>“Reliance Travels Ltd </strong> Just concentrate on our name and it says all to you. One of the foremost and reliable UK based traveling company. Our mission is to provide the best services at affordable prices to our clients. So achieving our customer satisfaction is our goal.</p>
+                    <p><strong>Zistravels Ltd </strong> Just concentrate on our name and it says all to you. One of the foremost and reliable UK based traveling company. Our mission is to provide the best services at affordable prices to our clients. So achieving our customer satisfaction is our goal.</p>
                     <h4>Our Affiliation:</h4>
-                    <p><strong>Reliance Travels</strong> is the independent travel agency, providing the services since last few years. We are registered as limited company in United Kingdom <strong>(Company Registration no. 07828941).</strong></p>
+                    <p><strong>Zistravels</strong> is the independent travel agency, providing the services since last few years. We are registered as limited company in United Kingdom <strong>(Company Registration no. <a href="https://find-and-update.company-information.service.gov.uk/company/14243432" target="_blank">14243432</a>).</strong></p>
                 </div>
                 <div class="col-md-5 col-sm-6">
                     <img class="no-padding" src="{{asset('assets/images/images/about-us.jpg')}}" alt="">
                 </div>
                 <div class="col-xs-12 no-margin-text">
                     <h4>Our working Technique:</h4>
-                    <p>Cheap is cheap. We always offer economical <a href="https://www.reliancetravels.co.uk/cheap-flights.html" title="Cheap Flight" target="_blank"><strong>flights</strong></a>. This is why we have something for everyone. Catering to the tastes of the most discerning travel connoisseur, as well as the economy conscious budget traveler. We at <strong>Reliance</strong> do indeed live up to the credo of a <strong>"One Stop Solution"</strong>. By making the reservation procedure simpler, easier and faster, we are trying to take away all your travel worries so kick off your shoes, free your mind, relax and be rid of Traveler's fatigue syndrome forever.</p>
+                    <p>Cheap is cheap. We always offer economical <a href="{{route('home.cheap_flights')}}" title="Cheap Flight" target="_blank"><strong>flights</strong></a>. This is why we have something for everyone. Catering to the tastes of the most discerning travel connoisseur, as well as the economy conscious budget traveler. We at <strong>Zistravels</strong> do indeed live up to the credo of a <strong>"One Stop Solution"</strong>. By making the reservation procedure simpler, easier and faster, we are trying to take away all your travel worries so kick off your shoes, free your mind, relax and be rid of Traveler's fatigue syndrome forever.</p>
                 </div>
             </div>
         </div>

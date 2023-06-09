@@ -29,8 +29,8 @@
                     <h4 style="margin-bottom: 25px;color: #f79617 !important;">Contact Us</h4>
                     <p>
                         <i class="fa fa-phone"></i>
-                        <a style="color:#FFF;" href="tel:00000000000">
-                            <span style="font-size: 16px;">000000000</span>
+                        <a style="color:#FFF;" href="tel:08003683970">
+                            <span style="font-size: 16px;">0800 368 3970</span>
                         </a>
                     </p>
                     <p>
@@ -182,7 +182,7 @@
                 We will be happy to quote you the multiple travelling options with our price guaranteed commitment !</p>
             <p class="stxt">So, what else are you waiting for?</p>
             <p class="freecall1">Call Now Free: <span class="dialme">
-                    <a href="tel:000000">00000000000000</a>
+                    <a href="tel:08003683970">0800 368 3970</a>
                 </span>
             </p>
             <p class="timings">
@@ -201,7 +201,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h4 class="modal-title">Reliance Travel Ltd.</h4>
+                <h4 class="modal-title">Zistravels Ltd.</h4>
             </div>
             <div class="modal-body">
                 <p id="alert_msg"></p>

@@ -7,16 +7,9 @@
         <div class="container">
 
             <h2>BOOKING CONDITIONS</h2>
-
-
-
-            <p>Please read these carefully as the person making this booking (either for him selves or for any other passenger) accepts all the below terms and conditions of Reliance Travels Ltd.</p>
-
-
+            <p>Please read these carefully as the person making this booking (either for him selves or for any other passenger) accepts all the below terms and conditions of Zistravels Ltd.</p>
 
             <h4>DEPOSITS & TICKETS ARE NEITHER REFUNDABLE NOR CHANGEABLE (Terms & Conditions May Apply).</h4>
-
-
 
             <p>Unless Specified, All the deposits paid and tickets purchased/issued are non-refundable. In case of cancellation or no show (Failure to arrive at departure airport on time) and non-changeable before or after departure (date change is not permitted). Once flights reserved, bookings/tickets are non-transferable to any other person means that name changes are not permitted. Issued Tickets are also not re-routable.</p>
             <p>If you are reserving the flight by making the advance partial payment (Initial deposit) then please note that fare/taxes may increase at any time without the prior notice. It means the price is not guaranteed unless the ticket is issued because the airline/consolidator has the right to increase the price due to any reason. In that case, we will not be liable and the passenger has to pay the fare/tax difference. We always recommend you to pay ASAP and get issue your ticket to avoid this situation. Furthermore, if you will cancel your reservation due to any reason, then the paid deposit(s) will be non-refundable.</p>
@@ -34,48 +27,28 @@
             <p>Due to Covid-19, Additional entry requirements have been introduced which varies from country to country and may be subject to change with short notice. You are responsible for checking and conforming with the entry and exit requirements at their origins and destinations. Requirements may include proof of negative PCR Covid-19 tests, temperature checks or completion of forms, etc.</p>
             <p>If the flight is affected due to Covid-19 then airline policies will be applied. To accommodate the traveler, it is quite possible that the airline only offers the future date change or credit voucher option instead of a refund. In that case, you must have to follow the airline rules and cannot demand a refund. If a full refund is permitted, A admin fee (Per person) will be deducted as the service charges and a refund can take up to 3 months. If the flight is operated by the airline and you decide not to board the flight, then you will be ineligible for a refund. In this case (if your ticket is refundable) then airline fare rules (cancellation fee) will be applied for processing the refunds.</p>
             <h4>VERY IMPORTANT</h4>
-            <p>Reliance Travels Ltd. does not accept responsibility for any kind of loss if the airline fails to operate due to any unforeseen circumstances like weather, war, natural disaster, pandemic, riots, strikes, etc. Passengers will be solely responsible for that so it is highly recommended that separate travel and health insurance must be arranged to protect you.</p>
+            <p>Zistravels Ltd. does not accept responsibility for any kind of loss if the airline fails to operate due to any unforeseen circumstances like weather, war, natural disaster, pandemic, riots, strikes, etc. Passengers will be solely responsible for that so it is highly recommended that separate travel and health insurance must be arranged to protect you.</p>
             <div class="col-xs-12 clear-padding">
                 <h2>Booking Terms and Conditions in Details</h2>
-
                 <p>When making a purchase/reservation you guarantee that you have the authority to accept and do accept on behalf of your party/dependant the terms of these booking conditions and the booking conditions of any contract principal where we are acting as agent. Therefore, it is requested please take some time to go through the terms and conditions as stated here and applicable to all contracts/purchase with us. </p>
-
                 <p>These conditions apply to all bookings - please take the time to read and understand them OR contact our personnel to discuss or answer your questions. The conditions are split into 3 parts.</p>
-
                 <p><b>Part 1</b> applies to all bookings (holiday, package, flight only, hotel only, car hire, insurance, any/all purchase)s</p>
-
                 <p><b>Part 2</b> also aplies to all bookings classified as "Packages" by the terms in "Your Holiday Contract" and</li>
-
                 <p><b>Part 3</b> applies to bookings classified as "Other Travel Arrangements" also subjected to other conditions as stated above.</p>
-
                 <p>Please note the following are the company policy and terms & booking conditions while, in certain cases a supplier, holiday provider, accommodation provider, hotelier, international air control or airline policy terms may also be applicable as / when advised. </p>
-
             </div>
-
             <div class="col-xs-12 clear-padding element-tab">
-
                 <ul class="nav nav-tabs tab-style1">
-
                     <li class="active"><a data-toggle="tab" href="#tab1">Part 1 - All Bookings</a></li>
-
                     <li><a data-toggle="tab" href="#tab2">Part 2 - Packages</a></li>
-
                     <li><a data-toggle="tab" href="#tab3">Part 3 - Other Travel Arrangments</a></li>
-
                 </ul>
 
                 <div class="tab-content">
-
                     <div id="tab1" class="tab-pane fade in active">
-
                         <p style="border-bottom:#CCC thin dashed;"><strong><em><a id="part1">Part 1 - All Bookings</a></em></strong></p>
-
                         <p style="text-align:right;"><strong><em><a href="#top">Go Top</a></em></strong></p>
-
                         <ol class="element-ol" start="1" type="1">
-
-
-
                             <li><strong><h4>Reservations</h4></strong></li>
 
                             <ol class="element-ol" start="1" type="a">
@@ -126,7 +99,7 @@
 
                                 <li>All Flight schedules / departures / returns / accommodation check in / etc should always be reconfirmed all onward and return reservations with the relevant airline/supplier at least 72 hours prior to departure. </li>
 
-                                <li>For matters concerning flight services, airports, dissatisfaction with carrier/accommodation, flight delays, in-flight services, onboard operations, flight cancellations, airline suspension, in-flight food / entertainment, etc Airlines/hotels are directly responsible/accountable and should be contacted directly for immediate problem solving / claim or complain. Company is not liable for Accommodation/hotel or Airline's services, policy, operations or standards. </li>
+                                <li>For matters concerning flight services, airports, dissatisfaction with carrier/accommodation, flight delays, in-flight services, onboard operations, flight cancellations, airline suspension, in-flight d / entertainment, etc Airlines/hotels are directly responsible/accountable and should be contacted directly for immediate problem solving / claim or complain. Company is not liable for Accommodation/hotel or Airline's services, policy, operations or standards. </li>
 
                                 <li>Matters related to Visa, Transit, Passport or Travel Document must be checked with the concerned consulate / embassy prior travel / reservation. Company does not bear any responsibility for providing, assisting or advising valid travel documents / transit / visa or appropriate passport for entry clearance. </li>
 
@@ -224,7 +197,7 @@
 
                                     <li>Online Flight reservations,  Telephonic Flight reservation, In-person Flight reservations or  reservation on email are all entertained and provided by us. </li>
 
-                                    <li>One way flight tickets,  return flight tickets, group reservation, <a href="https://www.reliancetravels.co.uk/cheap-flights.html" target="_blank"><strong>economy</strong></a> or <a href="https://www.reliancetravels.co.uk/business-class.html" target="_blank"><strong>business</strong></a> class  flights reservations are also bookable with us. </li>
+                                    <li>One way flight tickets,  return flight tickets, group reservation, <a href="{{route('home.cheap_flights')}}" target="_blank"><strong>economy</strong></a> or <a href="{{route('home.booking_conditions')}}" target="_blank"><strong>business</strong></a> class  flights reservations are also bookable with us. </li>
 
                                     <li>Flights leaving from any airport,  UK or outside UK or worldwide can be booked from us, in  currency and rate as applicable in UK as on date of final  payment and issuance. </li>
 

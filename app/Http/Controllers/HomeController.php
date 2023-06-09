@@ -99,7 +99,7 @@ class HomeController extends Controller
             $mail->Body .= "Comment: {$validatedData['comment']}<br>";
 
             $mail->send();
-            return redirect()->back()->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
+            return redirect()->route('home.index')->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Error occurred while sending the email.');
         }
@@ -125,9 +125,7 @@ class HomeController extends Controller
 
         }
     }
-
-    function online_search(Request $request)
-    {
+    function online_search(Request $request){
         $title = "online Search";
         $flight_from = $request->input(['flight_from']);
         $flight_to = $request->input(['flight_to']);
@@ -139,8 +137,20 @@ class HomeController extends Controller
         $cabin_class = $request->input(['cabin_class']);
         $flight_type = $request->input(['flight_type']);
 
-        $departure_day = explode("-", $departure)[0];
-        $departure_month = $departure[1];
+        $departure_parts = explode("-", $departure);
+$departure_day = $departure_parts[0];
+$departure_month = date('m', strtotime($departure_parts[1]));
+
+
+        // echo $departure;
+        // echo "</br>";
+        // echo $departure_day;
+        // echo "</br>";
+        // echo $departure_month;
+        // echo "</br>";
+
+        // return $departure[1] ;
+
         $return_day = "";
         $return_month = "";
         $outbound_percentage = 0;
@@ -172,20 +182,22 @@ class HomeController extends Controller
         }
 
         $departure_day = (int) $departure_day;
-        $col = ($departure_month < 10 && $departure_month > 0) ? "col0{$departure_month}" : "col{$departure_month}";
+        $col = ($departure_month < 10 && $departure_month > 0) ? "col{$departure_month}" : "col{$departure_month}";
+
         $outbound_percentage = DB::table('percentage')->where('id', $departure_day)->value($col);
 
-        // if (!empty($return)) {
-        //     $return_day = explode("-", $return)[0];
-        //     $return_month = $return[1];
-        //     $return_day = (int) $return_day;
-        //     $col_r = ($return_month < 10 && $return_month > 0) ? "col0{$return_month}" : "col{$return_month}";
-        //     $inbound_percentage = DB::table('percentage')->where('id', $return_day)->value($col_r);
-        // }
 
-        // if (session()->getId() === '') {
-        //     session()->start();
-        // }
+        if (!empty($return)) {
+            $return_day = explode("-", $return)[0];
+            $return_month = $return[1];
+            $return_day = (int) $return_day;
+            $col_r = ($return_month < 10 && $return_month > 0) ? "col0{$return_month}" : "col{$return_month}";
+            $inbound_percentage = DB::table('percentage')->where('id', $return_day)->value($col_r);
+        }
+
+        if (session()->getId() === '') {
+            session()->start();
+        }
 
         $flights = DB::table('airline_flight')
             ->join('airlines', 'airline_flight.airline_id', '=', 'airlines.id')
@@ -237,9 +249,109 @@ class HomeController extends Controller
 
             $row->price_percentage_added = round($row->price_adult + $row->price_children + $row->price_infant);
         }
-
-// return $request;
         return view('pages.search-results', compact('title','flights','flight_from','flight_to','departure','return','cabin_class','flight_type','padult', 'pchild','pinfant'));
+    }
+    function online_enquiry(){
+        return view('pages.online-flight-enquery');
+    }
+    function enquiry_form(Request $request){
+
+        $flight_city = $request->input(['flight_city']);
+        $flight_type = $request->input(['flight_type']);
+        $cabin_class = $request->input(['cabin_class']);
+        $departure = $request->input(['departure']);
+        $return = $request->input(['return']);
+        $airline_name = $request->input(['airline_name']);
+        $city = $request->input(['city']);
+        $ToAirportCode = $request->input(['ToAirportCode']);
+        $flight_to = $request->input(['flight_to']);
+        $FromAirportCode = $request->input(['FromAirportCode']);
+        $flight_from = $request->input(['flight_from']);
+        $price_adult = $request->input(['price_adult']);
+        $price_child = $request->input(['price_child']);
+        $price_infant = $request->input(['price_infant']);
+        $pinfant = $request->input(['pinfant']);
+        $padult = $request->input(['padult']);
+        $pchild = $request->input(['pchild']);
+        $airline_image = $request->input(['airline_image']);
+
+        return view('pages.online-flight-enquery',compact( 'flight_city', 'flight_type','cabin_class','departure','return','price_adult','airline_name','city','ToAirportCode',
+            'flight_to','airline_image','FromAirportCode','flight_from','pinfant','padult','pchild','price_child','price_infant'));
+    }
+
+    function submit_enquery(Request $request){
+        $title = "Zistravels - ";
+        $cname = $request->cname;
+        $cphone = $request->cphone;
+        $cemail = $request->cemail;
+        $departure_date = $request->departure_date;
+        $return_date = $request->return_date;
+        $padults = $request->padults;
+        $pchildren = $request->pchildren;
+        $pinfants = $request->pinfants;
+        $flight_city = $request->flight_city;
+        $flight_type = $request->flight_type;
+        $cabin_class = $request->cabin_class;
+        $departure = $request->departure;
+        $return = $request->return;
+        $airline_name = $request->airline_name;
+        $city = $request->city;
+        $padult = $request->padult;
+        $price_adult = $request->price_adult;
+        $pchild = $request->pchild;
+        $price_child = $request->price_child;
+        $pinfant = $request->pinfant;
+        $price_infant = $request->price_infant;
+        $ToAirportCode = $request->ToAirportCode;
+        $FromAirportCode = $request->FromAirportCode;
+        $flight_from = $request->flight_from;
+
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'muhammadalamgir10@gmail.com';
+            $mail->Password = 'znensgwmxpgeflzi';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+            $mail->setFrom($cemail, $cname);
+
+            $mail->addAddress('muhammadalamgir10@gmail.com', 'Flight Booking Detail');
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Flight Booking Form Submission';
+
+            $mail->Body .= '<table class="table">';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Customer Name:</strong></td><td>' . $cname . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Customer Phone:</strong></td><td>' . $cphone . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Customer Email:</strong></td><td>' . $cemail . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Flight Type:</strong></td><td>' . $flight_type . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Departure Date:</strong></td><td>' . $departure_date . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Return Date:</strong></td><td>' . $return_date . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Cabin Class:</strong></td><td>' . $cabin_class . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Airline Name:</strong></td><td>' . $airline_name . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Flying From :</strong></td><td>' . $flight_from . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Flying To:</strong></td><td>' . $flight_city . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize"># Adults:</strong></td><td>' . $padults . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize"># Children:</strong></td><td>' . $pchildren . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize"># Infants:</strong></td><td>' . $pinfants . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Adult Price:</strong></td><td>' . $price_adult . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Child Price:</strong></td><td>' . $price_child . '</td></tr>';
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Infant Price:</strong></td><td>' . $price_infant . '</td></tr>';
+            $mail->Body .= '</table>';
+
+
+
+
+
+            $mail->send();
+            return view('pages.index',compact('title'))->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Error occurred while sending the email.');
+        }
+
     }
 
 

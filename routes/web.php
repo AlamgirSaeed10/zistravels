@@ -18,8 +18,12 @@ Route::get('privacy-policy',[HomeController::class,'privacy_policy'])->name('hom
 Route::get('travel-tips',[HomeController::class,'travel_tips'])->name('home.travel_tips');
 
 
+
+Route::get('online-flight-enquiry',[HomeController::class,'online_enquiry'])->name('home.online_enquiry');
+
+Route::post('online_enquiry_form',[HomeController::class,'enquiry_form'])->name('home.enquiry_form');
+Route::post('submit_enquery',[HomeController::class,'submit_enquery'])->name('home.submit_enquery');
+
 Route::post('contact', [HomeController::class,'submitContactForm'])->name('contact.submit');
 Route::post('newsletter', [HomeController::class,'newsletterForm'])->name('footer.newsletter');
-
-
 Route::post('onlinesearchresults', [HomeController::class,'online_search'])->name('search.online_search');

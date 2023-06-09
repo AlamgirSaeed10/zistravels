@@ -24,30 +24,19 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <div class="trustpilot hidden-xs hidden-sm hidden-md">
-                                    <img src="assets/images/trustpilotstar.jpg" alt="Trust Pilot Reviews" />
-                                </div>
-                                <div class="customer-login hidden-xs">
-                                    <a href="#" target="_blank">
-                                        <h5>
-                                            <i class="fa fa-user box-icon-left round box-icon-sm animate-icon-top-to-bottom"></i>My Trips
-                                        </h5>
+                                    <a href="https://www.trustpilot.com/review/zistravels.co.uk" target="_blank">
+                                        <img src="assets/images/trustpilotstar.jpg" alt="Trust Pilot Reviews" />
                                     </a>
                                 </div>
-                                <ul class="top-header-contact">
-                                    <li style="margin-top:10px;">
-                                        <h1 class="call-icon">
-                                            <a href="tel:000000000000000">
-                                                <i class="fa fa-phone"></i>
-                                                <font>
-                                                    <span class="tol-free" style="float: left;margin-top: 13px;">0000000000000</span>
-                                                </font>
-                                            </a>
-                                        </h1>
+                                <ul class="top-header-contact" style="list-style: none; padding: 0;">
+                                    <li style="display: inline-block; margin-right: 10px;">
+                                      <a href="tel:08003683970" style="text-decoration: none; color: #000;">
+                                        <i class="fa fa-phone" style="margin-right: 5px;"></i>
+                                        <span style="font-size: 14px;">0800 368 3970</span>
+                                      </a>
                                     </li>
-                                </ul>
-                                <span class="hidden-sm hidden-md hidden-lg client">
-                        <a href="https://www.zistravels.co.uk/online-payments.php" target="_blank">Customer Login</a>
-                      </span>
+                                  </ul>
+
                             </div>
                         </div>
                     </div>

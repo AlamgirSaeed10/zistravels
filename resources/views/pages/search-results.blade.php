@@ -25,7 +25,7 @@
                         <img src="{{ asset('assets/images/images/hunting-better-ig.png') }}"
                             class="img-responsive just-call-banner" alt="Call Now & get Best deals">
                     </div>
-
+                    <a href="{{ route('home.online_enquiry') }}">online </a>
                     @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
@@ -181,7 +181,7 @@
                                                                                         class="text-right"><br>{{ $flight_to }}</small>
                                                                                 </h5>
                                                                                 <h4 class="text-right">11:05 AM
-                                                                                    <small><br>Thu 08, Jun</small>
+                                                                                    <small><br>{{date('d F Y',strtotime($departure))}}</small>
                                                                                 </h4>
                                                                             </div>
                                                                             <div
@@ -209,8 +209,7 @@
                                                                                     {{ $FromAirportCode }} <small
                                                                                         class="text-left"><br>{{ $flight_from }}</small>
                                                                                 </h5>
-                                                                                <h4 class="text-left">5:00 PM <small><br>Fri
-                                                                                        09, Jun</small>
+                                                                                <h4 class="text-left">5:00 PM <small><br>{{date('d F Y',strtotime($return))}}</small>
                                                                                 </h4>
                                                                             </div>
                                                                             <div class="col-xs-12 visible-xs text-center">
@@ -239,28 +238,75 @@
                                                                 <div class="price">
                                                                     <h6>From</h6>
 
-                                                                    <h1>£ {{ $value->price }}<span>PP</span></h1>
-                                                                    <p class="{{ $padult != null ? '' : 'hidden' }} {{ $pchild != null ? '' : 'hidden' }} {{ $pinfant != null ? '' : 'hidden' }}">
-                                                                        {{ $padult }} Adult{{ $pchild != null ? ',' . $pchild . ' child' : '' }}{{ $pinfant != null ? ',' . $pinfant . ' infaint' : '' }}
+                                                                    <h1>£ {{ $value->price_adult }}<span>PP</span></h1>
+                                                                    <p
+                                                                        class="{{ $padult != null ? '' : 'hidden' }} {{ $pchild != null ? '' : 'hidden' }} {{ $pinfant != null ? '' : 'hidden' }}">
+                                                                        {{ $padult }}
+                                                                        Adult{{ $pchild != null ? ',' . $pchild . ' child' : '' }}{{ $pinfant != null ? ',' . $pinfant . ' infaint' : '' }}
                                                                     </p>
 
                                                                     <h6>
-                                                                    <strong style="font-size:13px;">Total Price £ {{$value->price}}</strong>
+                                                                        <strong style="font-size:13px;">Total Price £
+                                                                            {{ $pinfant * $value->price_infant + $padult * $value->price_adult + $pchild * $value->price_child }}</strong>
                                                                     </h6>
                                                                 </div>
                                                                 <sub class="float-left">
                                                                     <span class="text-danger">*</span>
                                                                     Return, Inc. Taxes
-                                                                    </sub>
+                                                                </sub>
                                                                 <div class="add-to-link">
                                                                     <a class="call_now" href="tel:0000000">
                                                                         <div><i class="fa fa-phone"></i><span>000 0000
                                                                                 0000</span></div>
                                                                     </a>
-                                                                    <a class="book_now" href="">
-                                                                        <div><i class="fa fa-check"></i><span>Book
-                                                                                Now</span></div>
-                                                                    </a>
+
+
+                                                                    <form method="post" action="{{route('home.enquiry_form')}}">
+                                                                        @csrf
+                                                                        <input type="hidden" name="flight_city" value="{{$flights[0]->city }}">
+                                                                        <input type="hidden" name="flight_type" value="{{$flight_type }}">
+                                                                        <input type="hidden" name="cabin_class" value="{{$cabin_class }}">
+                                                                        <input type="hidden" name="departure" value="{{$departure }}">
+                                                                        <input type="hidden" name="return" value="{{$return}}">
+                                                                        <input type="hidden" name="airline_name" value="{{$value->name }}">
+                                                                        <input type="hidden" name="city" value="{{$value->city }}">
+
+                                                                        <input type="hidden" name="price_adult" value="{{$value->price_adult }}">
+                                                                        <input type="hidden" name="price_child" value="{{$value->price_child }}">
+                                                                        <input type="hidden" name="price_infant" value="{{$value->price_infant }}">
+
+                                                                        <input type="hidden" name="ToAirportCode" value="{{$ToAirportCode }}">
+                                                                        <input type="hidden" name="FromAirportCode" value="{{$FromAirportCode }}">
+                                                                        <input type="hidden" name="flight_to" value="{{$flight_to }}">
+                                                                        <input type="hidden" name="flight_from" value="{{$flight_from }}">
+
+                                                                        <input type="hidden" name="pinfant_price" value="{{$value->price_infant }}">
+                                                                        <input type="hidden" name="padult_price" value="{{$value->price_adult}}">
+                                                                        <input type="hidden" name="pchild_price" value="{{$value->price_child }}">
+                                                                        <input type="hidden" name="padult" value=" {{$padult}}">
+                                                                        <input type="hidden" name="pchild" value=" {{$pchild }}">
+                                                                        <input type="hidden" name="pinfant" value="{{$pinfant }}">
+                                                                        <input type="hidden" name="airline_image" value="{{$value->image }}">
+
+                                                                        <button class="book_now"><i class="fa fa-check"></i><span>Book Now</span></button>
+
+
+                                                                       {{-- <a href="" class="book_now"><i class="fa fa-check"></i><span>Book Now</span></a> --}}
+                                                                    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                     <a class="whatsapp_now" href="#"
                                                                         target="_blank">
                                                                         <div><i
@@ -268,10 +314,13 @@
                                                                         </div>
                                                                     </a>
                                                                 </div>
+
                                                             </div>
                                                             <div class="row visible-sm visible-xs">
                                                                 <div class="col-xs-6 clear-padding">
-                                                                    <h3 class="mob_price">£ {{$value->price}}<small><small>1Person</small></small></h3>
+                                                                    <h3 class="mob_price">£
+                                                                        {{ $value->price }}<small><small>1
+                                                                                Person</small></small></h3>
                                                                 </div>
                                                                 <div class="col-xs-6 clear-padding">
                                                                     <div class="add-to-link">
@@ -279,13 +328,12 @@
                                                                             <div><i class="fa fa-phone"></i><span>Call
                                                                                     Now</span></div>
                                                                         </a>
-                                                                        <a class="book_now"
-                                                                            href="">
+                                                                        <a class="book_now" href="">
                                                                             <div><i class="fa fa-check"></i><span>Book
                                                                                     Now</span></div>
                                                                         </a>
-                                                                        <a class="whatsapp_now"
-                                                                            href="" target="_blank">
+                                                                        <a class="whatsapp_now" href=""
+                                                                            target="_blank">
                                                                             <div><i
                                                                                     class="fa fa-whatsapp"></i><span>Whatsapp</span>
                                                                             </div>
@@ -298,7 +346,7 @@
                                                     </div>
                                                 </div>
                                             @endforeach
-                                            @endif
+                                        @endif
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
