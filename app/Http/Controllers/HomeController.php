@@ -58,40 +58,6 @@ class HomeController extends Controller
         $title="Blogs";
         return view('pages.blogs',compact('title'));
     }
-
-    function online_search(Request $request){
-        $title = "online Search";
-
-        // Define the validation rules
-        $validator = Validator::make($request->all(), [
-            'padults' => 'required|integer|min:1',
-            'flight_from' => 'required',
-            'flight_to' => 'required',
-            'departure_date' => 'required|date',
-            'g-recaptcha-response' =>'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $dep_date = $request->input('departure_date');
-        $ret_date = $request->input('return_date');
-
-        $cabin_class = $request->input('cabin_class');
-        $flight_type = $request->input('flight_type');
-
-        $departureAirport = $request->input('flight_from');
-        $destinationAirport = $request->input('flight_to');
-
-        $flights = DB::table('flight_details')
-        ->where('DepCity', $departureAirport)
-        ->where('DestCity', $destinationAirport)
-        ->get();
-            return view('pages.search-results', compact('title','flights','departureAirport','destinationAirport','dep_date','ret_date','flight_type','cabin_class'));
-    }
-
-
     function submitContactForm(Request $request){
         $validatedData = $request->validate([
             'name' => 'required',
@@ -158,6 +124,122 @@ class HomeController extends Controller
             return redirect()->back()->with('error','Unknow error has occured please try again..!');
 
         }
+    }
+
+    function online_search(Request $request)
+    {
+        $title = "online Search";
+        $flight_from = $request->input(['flight_from']);
+        $flight_to = $request->input(['flight_to']);
+        $departure = $request->input(['departure_date']);
+        $return = $request->input(['return_date']);
+        $padult = $request->input(['padults']);
+        $pchild = $request->input(['pchildren']);
+        $pinfant = $request->input(['pinfants']);
+        $cabin_class = $request->input(['cabin_class']);
+        $flight_type = $request->input(['flight_type']);
+
+        $departure_day = explode("-", $departure)[0];
+        $departure_month = $departure[1];
+        $return_day = "";
+        $return_month = "";
+        $outbound_percentage = 0;
+        $inbound_percentage = 0;
+        $percentage = 0;
+        $operation = '+';
+        $flight_city = "";
+        $flights = [];
+
+        $airports = DB::table('airports')->get();
+        foreach($airports as $row) {
+            if ($flight_from == $row->city . " - " . $row->code) {
+                if ($row->percentage < 0) {
+                    $percentage = abs($row->percentage);
+                    $operation = '-';
+                } else {
+                    $percentage = $row->percentage;
+                }
+                $flight_city = $flight_to;
+            } elseif ($flight_to == $row->city . " - " . $row->code) {
+                if ($row->percentage < 0) {
+                    $percentage = abs($row->percentage);
+                    $operation = '-';
+                } else {
+                    $percentage = $row->percentage;
+                }
+                $flight_city = $flight_from;
+            }
+        }
+
+        $departure_day = (int) $departure_day;
+        $col = ($departure_month < 10 && $departure_month > 0) ? "col0{$departure_month}" : "col{$departure_month}";
+        $outbound_percentage = DB::table('percentage')->where('id', $departure_day)->value($col);
+
+        // if (!empty($return)) {
+        //     $return_day = explode("-", $return)[0];
+        //     $return_month = $return[1];
+        //     $return_day = (int) $return_day;
+        //     $col_r = ($return_month < 10 && $return_month > 0) ? "col0{$return_month}" : "col{$return_month}";
+        //     $inbound_percentage = DB::table('percentage')->where('id', $return_day)->value($col_r);
+        // }
+
+        // if (session()->getId() === '') {
+        //     session()->start();
+        // }
+
+        $flights = DB::table('airline_flight')
+            ->join('airlines', 'airline_flight.airline_id', '=', 'airlines.id')
+            ->join('flights', 'flights.id', '=', 'airline_flight.flight_id')
+            ->where('flights.city', $flight_city)
+            ->orderBy('airline_flight.price', 'asc')
+            ->select('airlines.name', 'airlines.image', 'flights.city', 'airline_flight.price')
+            ->get()
+            ->toArray();
+
+        foreach ($flights as &$row) {
+            $row->price_percentage_added = $row->price + ($row->price * ($inbound_percentage + $outbound_percentage)) / 100;
+
+            if ($percentage > 0) {
+                if ($operation == '-') {
+                    $row->price_percentage_added -= ($row->price_percentage_added * $percentage) / 100;
+                } else {
+                    $row->price_percentage_added -= ($row->price_percentage_added * $percentage) / 100;
+                }
+            }
+
+            if ($cabin_class == "Premium Economy") {
+                $row->price_percentage_added += ($row->price_percentage_added * 90) / 100;
+            } elseif ($cabin_class == "Business") {
+                $row->price_percentage_added += ($row->price_percentage_added * 125) / 100;
+            }
+
+            if (session()->has('username')) {
+                $row->price_percentage_added -= ($row->price_percentage_added * 5) / 100;
+            }
+
+            $row->price_per_person = $row->price_percentage_added;
+            $row->price_adult = $row->price_percentage_added;
+            $row->price_child = $row->price_percentage_added - 50;
+            $row->price_infant = $row->price_percentage_added - ($row->price_percentage_added * 60) / 100;
+            $row->price_padults = $padult * $row->price_percentage_added;
+
+            $row->price_children = 0;
+            if ($pchild > 0) {
+                $row->price_children = $pchild * $row->price_percentage_added;
+            }
+            $row->price_children -= ($pchild * 50);
+
+            $row->price_infants = 0;
+            if ($pinfant > 0) {
+                $row->price_infants = $pinfant * $row->price_percentage_added;
+                $row->price_infants -= ($row->price_infants * 60) / 100;
+            }
+
+            $row->price_percentage_added = round($row->price_adult + $row->price_children + $row->price_infant);
+        }
+
+// return $request;
+        return view('pages.search-results', compact('title','flights','flight_from','flight_to','departure','return','cabin_class','flight_type','padult', 'pchild','pinfant'));
     }
 
 

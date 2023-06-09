@@ -18,6 +18,10 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('assets/css/search.css')}}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> --}}
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body class="load-full-screen">
@@ -45,6 +49,4 @@
     <script src="{{asset('assets/js/js.js')}}"></script>
     <script src="{{asset('assets/js/homejs.js')}}"></script>
     <script src="{{asset('assets/js/search.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.autocomplete.min.js')}}"></script>
-    <script src="{{asset('assets/js/currency-autocomplete.js')}}"></script>
 </html>

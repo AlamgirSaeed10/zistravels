@@ -1,12 +1,23 @@
 @php
     $airports = DB::table('airports')->get();
+    $FromFlightParts = explode(' - ', $flight_from);
+    $ToFlightParts = explode(' - ', $flight_to);
+    $FromAirportCode = end($FromFlightParts);
+    $ToAirportCode = end($ToFlightParts);
+
 @endphp
 @extends('includes.master')
 @section('title', $title)
 @section('content')
+    <style>
+        .flight-ticket {
+            border: 1px solid;
+            padding: 10px;
+        }
+    </style>
     <div class="site-wrapper">
         <div class="row">
-            <div class="container">
+            <div class="container" style="margin-left: 10%; margin-right: 10%;">
                 <!-- START: INDIVIDUAL LISTING AREA -->
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col-lg-push-3 flight-listing">
                     <!-- START: LOWEST FARE SLIDER -->
@@ -59,14 +70,14 @@
                                             <div class="col-xs-12 section-title" style="margin:0; padding-left:0px;">
                                                 <h2
                                                     style="font-size:27px;font-weight:bold;letter-spacing:1px;text-transform: capitalize;">
-                                                    Cheap Flights To {{ $flights[0]->DestCity }}</h2>
+                                                    Cheap Flights To {{ $flights[0]->city }}</h2>
                                                 <p style="text-transform:capitalize;"> {{ $flight_type }},
                                                     {{ $cabin_class }}, departuring on
-                                                    <strong>{{ date('d F Y', strtotime($dep_date)) }}</strong>  <span class="{{ $ret_date === null ? 'invisible' : ' - ' }}">  and
-                                                    returning on
-                                                    <strong >
-                                                        {{ date('d F Y', strtotime($ret_date)) }}</strong>
-                                                        </span>
+                                                    <strong>{{ date('d F Y', strtotime($departure)) }} </strong>
+                                                    <span class="{{ $return === null ? 'invisible' : ' - ' }}"> and
+                                                        returning on
+                                                        <strong>{{ date('d F Y', strtotime($return)) }}</strong>
+                                                    </span>
                                                 </p>
 
                                                 <div class="fetch" id="fetching-data">
@@ -74,263 +85,145 @@
                                                     <p>Please Wait Fetching Flights....</p>
                                                 </div>
                                             </div>
+
+
                                             @foreach ($flights as $key => $value)
-                                                @if ($value->AirlineFare == null)
-                                                {{-- @if ()
-
-                                                @endif --}}
-                                                    <div class="flight-list-view online-list newflights">
-                                                        <div class="row">
-                                                            <div
-                                                                class="col-lg-9 col-md-9 col-sm-12 col-xs-12 clear-padding ">
-                                                                <div class="row flightdetails " >
-                                                                    <div class="col-xs-12 airline-list">
-                                                                        <span class="airline-no">{{ ++$key }}</span>
-                                                                        <strong>{{ $value->AirlineName }}</strong> To {{ $value->DestCity }}
-                                                                    </div>
-                                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 clear-padding">
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 flying clear-padding">
-                                                                                <h2 class="">Outbound Flight <i
-                                                                                        class="fa fa-long-arrow-right"></i>
-                                                                                </h2>
-                                                                            </div>
+                                                <div class="flight-list-view online-list newflights">
+                                                    <div class="row" style="width: 100%;">
+                                                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 clear-padding">
+                                                            <div class="row">
+                                                                <div class="col-xs-12 airline-list">
+                                                                    <span class="airline-no">{{ ++$key }}</span>
+                                                                    <strong>{{ $value->name }}</strong>
+                                                                    To {{ $value->city }}
+                                                                </div>
+                                                                <div
+                                                                    class="col-lg-6 col-md-6 col-sm-6 col-xs-6 clear-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 flying clear-padding">
+                                                                            <h2 class="">Outbound Flight <i
+                                                                                    class="fa fa-long-arrow-right"></i></h2>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding flight_leg ">
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
-                                                                                    <h5 class="text-right">
-                                                                                        {{ $value->DepAirportCode }}<small
-                                                                                            class="text-right">
-                                                                                            <br> {{$value->DepCity}} </small>
-                                                                                    </h5>
-                                                                                    <h4 class="text-right">{{$value->DepTime}}<small>
-                                                                                            <br>{{ date('d F Y',strtotime($dep_date))}}</small>
-                                                                                    </h4>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-center">
-                                                                                    <div class="row">
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding stopover">
-                                                                                            <small>{{$value->AirlineStops}}</small>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding f_connection">
-                                                                                            <div class="icon"></div>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding airline">
-                                                                                            <small>{{ $value->AirlineName }}<br> </small>
-                                                                                            <img
-                                                                                                src="{{ asset('assets/images')}}/{{$value->AirlineImage}}"alt="{{$value->AirlineName}}" />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
-                                                                                    <h5 class="text-left">
-                                                                                        {{ $value->DestAirportCode }}
-                                                                                        <small class="text-left">
-                                                                                            <br>
-                                                                                            {{ $value->DestCity }}</small>
-                                                                                    </h5>
-                                                                                    <h4 class="text-left">
-                                                                                        {{ $value->DestTime }}
-                                                                                        <small>
-                                                                                            <br>{{ date('d F Y', strtotime($dep_date)) }}</small>
-                                                                                    </h4>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-xs-12 visible-xs text-center">
-                                                                                    <div class="row">
-                                                                                        <div
-                                                                                            class="col-xs-12 clear-padding airline">
-                                                                                            <img src="{{ asset('assets/images/airlines-jpg/SN.jpg') }}"
-                                                                                                alt="SN Brussels Airlines" />
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-xs-12 clear-padding stopover">
-                                                                                            <small>{{$value->AirlineStops}}</small>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 clear-padding">
-                                                                        <div class="row" >
-                                                                            <div class="col-xs-12 flying clear-padding">
-                                                                                <h2 class="nb">Inbound Flight <i
-                                                                                        class="fa fa-long-arrow-left"></i>
-                                                                                </h2>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row ">
+                                                                        <div
+                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding flight_leg ">
                                                                             <div
-                                                                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding flight_leg nb">
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
-                                                                                    <h5 class="text-right">{{$value->DestAirportCode}}<small
-                                                                                            class="text-right">
-                                                                                            <br>{{$value->DestCity}} </small>
-                                                                                    </h5>
-                                                                                    <h4 class="text-right">{{$value->DestTime}} <small>
-                                                                                        <small>
-                                                                                            <br>{{ date('d F Y', strtotime($ret_date)) }}</small>
-                                                                                    </h4>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-center">
-                                                                                    <div class="row">
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding stopover">
-                                                                                            <small>{{$value->AirlineStops}}</small>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding f_connection">
-                                                                                            <div class="icon"></div>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding airline">
-                                                                                            <small>{{$value->AirlineName}}<br></small>
-                                                                                            <img src="{{ asset('assets/images/') }}/{{$value->AirlineImage}}"
-                                                                                                alt="{{$value->AirlineName}}" />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
-                                                                                    <h5 class="text-left">{{$value->DepAirportCode}}<small
-                                                                                            class="text-left">
-                                                                                            <br>{{$value->DepCity}}</small>
-                                                                                    </h5>
-                                                                                    <h4 class="text-left">{{$value->DestTime}}
-                                                                                        <small> <br>{{ date('d F Y', strtotime($ret_date)) }}</small>
-                                                                                    </h4>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-xs-12 visible-xs text-center">
-                                                                                    <div class="row">
-                                                                                        <div
-                                                                                            class="col-xs-12 clear-padding airline">
-                                                                                            <img src="{{ asset('assets/images/airlines-jpg/SN.jpg') }}"
-                                                                                                alt="SN Brussels Airlines" />
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-xs-12 clear-padding stopover">
-                                                                                            <small>{{$value->AirlineStops}}</small>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="col-lg-3 col-md-3 hidden-sm hidden-xs clear-padding call_to_book_main">
-                                                                <a href="tel:02079936068">
-                                                                    <div class="call_to_book_inner">
-                                                                        <div class="call_to_book">
-                                                                            <p> Special rates not published online. <br>
-                                                                                <strong>Call us now</strong>
-                                                                                <br>
-                                                                                <span class="icon-phone"></span>
-                                                                                <span class="dialme">0207 993 6068</span>
-
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-
-                                                            <a href="tel:02079936068">
-                                                                <div class="col-sm-12 visible-sm clear-padding mobi_price">
-                                                                    Special
-                                                                    rates not published online. <strong>Call us now</strong>
-                                                                    <span class="fa fa-phone"></span>
-                                                                    <span class="dialme">0207 993 6068</span>
-                                                                </div>
-                                                                <div class="col-xs-12 visible-xs clear-padding mobi_price">
-                                                                    <strong>Click to call</strong>
-                                                                    <span class="icon-phone"></span>
-                                                                    <span class="dialme">0207 993 6068</span>
-                                                                    <br>
-                                                                    <small>
-                                                                        <small>Special rates not published online.</small>
-                                                                    </small>
-                                                                </div>
-                                                            </a>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </div>
-                                                @else
-                                                    <div class="flight-list-view online-list newflights">
-                                                        <div class="row" style="width: 100%;">
-                                                            <div
-                                                                class="col-lg-9 col-md-9 col-sm-12 col-xs-12 clear-padding">
-                                                                <div class="row flightdetails">
-                                                                    <div class="col-xs-12 airline-list">
-                                                                        <span class="airline-no"></span>
-                                                                        <strong>{{ $value->AirlineName }}</strong>
-                                                                        To {{$value->DestCity}}
-                                                                    </div>
-                                                                    <div
-                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding">
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12 flying clear-padding">
-                                                                                <h2 class="nb">Outbound Flight <i
-                                                                                        class="fa fa-long-arrow-right"></i>
-                                                                                </h2>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div
-                                                                                class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding flight_leg nb">
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
-                                                                                    <h5 class="text-right">{{$value->DepAirportCode}} <small
-                                                                                        class="text-right"><br>{{$value->DepCity}}</small>
+                                                                                class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
+                                                                                <h5 class="text-right">
+                                                                                    {{ $FromAirportCode }}
+                                                                                    <small
+                                                                                        class="text-right"><br>{{ $flight_from }}</small>
                                                                                 </h5>
-                                                                                    <h4 class="text-right">
-                                                                                        {{ $value->DepCity }}
-                                                                                        <small> <br>{{ date('d F Y', strtotime($dep_date)) }}</small>
-                                                                                    </h4>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-center">
-                                                                                    <div class="row">
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding stopover">
-                                                                                            <small>{{$value->AirlineStops}}</small>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding f_connection">
-                                                                                            <div class="icon"></div>
-                                                                                        </div>
+                                                                                <h4 class="text-right">11:05 AM
+                                                                                    <small><br>Thu 08, Jun</small>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-center">
+                                                                                <div class="row">
+                                                                                    <div
+                                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding stopover">
+                                                                                        <small>1 stop</small>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding f_connection">
+                                                                                        <div class="icon"></div>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding airline">
+                                                                                        <small><br></small>
+                                                                                        <img src="{{ asset('assets/images/airlines/') }}/{{ $value->image }}"
+                                                                                            alt="{{ $value->name }}">
                                                                                     </div>
                                                                                 </div>
-                                                                                <div
-                                                                                    class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
-                                                                                    <h5 class="text-left">{{$value->DestAirportCode}} <small
-                                                                                            class="text-left"><br>{{$value->DestCity}}</small>
-                                                                                    </h5>
-                                                                                    <h4 class="text-left">4:05 PMs
-                                                                                        <small> <br>{{ date('d F Y', strtotime($dep_date)) }}</small>
-                                                                                    </h4>
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
+                                                                                <h5 class="text-left">
+                                                                                    {{ $ToAirportCode }} <small
+                                                                                        class="text-left"><br>{{ $flight_to }}</small>
+                                                                                </h5>
+                                                                                <h4 class="text-left">5:00 PM <small><br>Fri
+                                                                                        09, Jun</small>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div class="col-xs-12 visible-xs text-center">
+                                                                                <div class="row">
+                                                                                    <div
+                                                                                        class="col-xs-12 clear-padding airline">
+                                                                                        <img src="{{ asset('assets/images/airlines/') }}/{{ $value->image }}"
+                                                                                            alt="{{ $value->name }}">
+
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="col-xs-12 clear-padding stopover">
+                                                                                        <small>1 stop</small>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div
-                                                                                    class="col-xs-12 visible-xs text-center">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-12 clear-padding airline">
-                                                                                            <img src="{{asset('assets/images')}}/{{$value->AirlineImage}}" alt="{{$value->AirlineName}}">
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="col-xs-12 clear-padding stopover">
-                                                                                            <small>{{$value->AirlineStops}}</small>
-                                                                                        </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div
+                                                                    class="col-lg-6 col-md-6 col-sm-6 col-xs-6 clear-padding">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 flying clear-padding">
+                                                                            <h2 class="">Inbound Flight <i
+                                                                                    class="fa fa-long-arrow-left"></i></h2>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding flight_leg ">
+                                                                            <div
+                                                                                class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
+                                                                                <h5 class="text-right">
+                                                                                    {{ $ToAirportCode }}
+                                                                                    <small
+                                                                                        class="text-right"><br>{{ $flight_to }}</small>
+                                                                                </h5>
+                                                                                <h4 class="text-right">11:05 AM
+                                                                                    <small><br>Thu 08, Jun</small>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-4 col-md-4 col-sm-4 hidden-xs text-center">
+                                                                                <div class="row">
+                                                                                    <div
+                                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding stopover">
+                                                                                        <small>1 stop</small>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding f_connection">
+                                                                                        <div class="icon"></div>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-padding airline">
+                                                                                        <small><br></small>
+                                                                                        <img src="{{ asset('assets/images/airlines/') }}/{{ $value->image }}"
+                                                                                            alt="{{ $value->name }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-lg-4 col-md-4 col-sm-4 col-xs-6 dest clear-padding">
+                                                                                <h5 class="text-left">
+                                                                                    {{ $FromAirportCode }} <small
+                                                                                        class="text-left"><br>{{ $flight_from }}</small>
+                                                                                </h5>
+                                                                                <h4 class="text-left">5:00 PM <small><br>Fri
+                                                                                        09, Jun</small>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div class="col-xs-12 visible-xs text-center">
+                                                                                <div class="row">
+                                                                                    <div
+                                                                                        class="col-xs-12 clear-padding airline">
+                                                                                        <img src="{{ asset('assets/images/airlines/') }}/{{ $value->image }}"
+                                                                                            alt="{{ $value->name }}">
+
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="col-xs-12 clear-padding stopover">
+                                                                                        <small>1 stop</small>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -338,84 +231,85 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="col-lg-3 col-md-3 col-sm-12 col-xs-12 clear-padding price_section">
-                                                                <div class="price_details hidden-xs hidden-sm">
-                                                                    <div class="price">
-                                                                        <h6>From</h6>
-                                                                        <h1>£ {{$value->AirlineFare}}<span>PP</span></h1>
-                                                                        <h6>
-                                                                            Oneway, Inc. Taxes<br>
-                                                                            1 Adult<br>
-                                                                            <strong style="font-size:13px;">Total Price £
-                                                                                {{$value->AirlineFare}}</strong>
-                                                                        </h6>
-                                                                    </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="col-lg-3 col-md-3 col-sm-12 col-xs-12 clear-padding price_section">
+                                                            <div class="price_details hidden-xs hidden-sm">
+                                                                <div class="price">
+                                                                    <h6>From</h6>
+
+                                                                    <h1>£ {{ $value->price }}<span>PP</span></h1>
+                                                                    <p class="{{ $padult != null ? '' : 'hidden' }} {{ $pchild != null ? '' : 'hidden' }} {{ $pinfant != null ? '' : 'hidden' }}">
+                                                                        {{ $padult }} Adult{{ $pchild != null ? ',' . $pchild . ' child' : '' }}{{ $pinfant != null ? ',' . $pinfant . ' infaint' : '' }}
+                                                                    </p>
+
+                                                                    <h6>
+                                                                    <strong style="font-size:13px;">Total Price £ {{$value->price}}</strong>
+                                                                    </h6>
+                                                                </div>
+                                                                <sub class="float-left">
+                                                                    <span class="text-danger">*</span>
+                                                                    Return, Inc. Taxes
+                                                                    </sub>
+                                                                <div class="add-to-link">
+                                                                    <a class="call_now" href="tel:0000000">
+                                                                        <div><i class="fa fa-phone"></i><span>000 0000
+                                                                                0000</span></div>
+                                                                    </a>
+                                                                    <a class="book_now" href="">
+                                                                        <div><i class="fa fa-check"></i><span>Book
+                                                                                Now</span></div>
+                                                                    </a>
+                                                                    <a class="whatsapp_now" href="#"
+                                                                        target="_blank">
+                                                                        <div><i
+                                                                                class="fa fa-whatsapp"></i><span>Whatsapp</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row visible-sm visible-xs">
+                                                                <div class="col-xs-6 clear-padding">
+                                                                    <h3 class="mob_price">£ {{$value->price}}<small><small>1Person</small></small></h3>
+                                                                </div>
+                                                                <div class="col-xs-6 clear-padding">
                                                                     <div class="add-to-link">
                                                                         <a class="call_now" href="tel:02079936068">
-                                                                            <div><i class="fa fa-phone"></i><span>0207 993
-                                                                                    6068</span></div>
+                                                                            <div><i class="fa fa-phone"></i><span>Call
+                                                                                    Now</span></div>
                                                                         </a>
-                                                                        <a class="book_now" href="">
+                                                                        <a class="book_now"
+                                                                            href="">
                                                                             <div><i class="fa fa-check"></i><span>Book
                                                                                     Now</span></div>
                                                                         </a>
                                                                         <a class="whatsapp_now"
-                                                                            href="https://api.whatsapp.com/send?phone=&amp;text=I'm%20interested%20in%20flights%20to%20Freetown%20from%20Heathrow%20Oneway%20Departure Date:%20Fri, Jun 30%20Return Date:%20Sat, Jan 05%20Adults:%201%20Price:%20£1176%20%20%20%20"
-                                                                            target="_blank">
+                                                                            href="" target="_blank">
                                                                             <div><i
                                                                                     class="fa fa-whatsapp"></i><span>Whatsapp</span>
                                                                             </div>
                                                                         </a>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row visible-sm visible-xs">
-                                                                    <div class="col-xs-6 clear-padding">
-                                                                        <h3 class="mob_price">£
-                                                                            1176<small><small>1Person</small></small></h3>
-                                                                    </div>
-                                                                    <div class="col-xs-6 clear-padding">
-                                                                        <div class="add-to-link">
-                                                                            <a class="call_now" href="tel:">
-                                                                                <div><i class="fa fa-phone"></i><span>Call
-                                                                                        Now</span></div>
-                                                                            </a>
-                                                                            <a class="book_now" href="">
-                                                                                <div><i class="fa fa-check"></i><span>Book
-                                                                                        Now</span></div>
-                                                                            </a>
-                                                                            <a class="whatsapp_now"
-                                                                                href="https://api.whatsapp.com/send?phone=&amp;text=I'm%20interested%20in%20flights%20to%20Freetown%20from%20Heathrow%20OnewayOneway%20Departure Date:%20Fri, Jun 30%20Return Date:%20Sat, Jan 05%20Adults:%201%20Price:%20£1176%20%20%20%20"
-                                                                                target="_blank">
-                                                                                <div><i
-                                                                                        class="fa fa-whatsapp"></i><span>Whatsapp</span>
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
-                                                @endif
+                                                </div>
                                             @endforeach
-                                        @endif
+                                            @endif
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="premium_economy"></div>
-                                    <div role="tabpanel" class="tab-pane fade" id="business_class"></div>
-                                    <div role="tabpanel" class="tab-pane fade" id="first_class"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- END: FLIGHT LIST VIEW -->
                 </div>
-                <!-- END: INDIVIDUAL LISTING AREA -->
-                <!-- START: FILTER AREA -->
                 <div class="col-lg-3 col-md-12 col-xs-12 col-lg-pull-9 clear-padding">
                     <div class="modify-search">
-                        <h3 style="background: #015F9E;margin: 39px 0 0 0;text-align: center;padding: 10px 0;color: #ffffff;">
+                        <h3
+                            style="background: #015F9E;margin: 39px 0 0 0;text-align: center;padding: 10px 0;color: #ffffff;">
                             Refine Your Results </h3>
                         <form autocomplete="off" class="filter-area" name="frmsearch" id="frmsearch" method="post"
                             action="{{ route('search.online_search') }}">
@@ -423,7 +317,8 @@
                             <div style="text-align:center;" class="search-col-padding">
                                 <label class="radio-inline return-section">
                                     <input type="radio" name="flight_type" id="flight_type" value="Return"
-                                        checked="checked"> Round Trip </label>
+                                        checked="checked">
+                                    Round Trip </label>
                                 <label class="radio-inline oneway-section">
                                     <input type="radio" name="flight_type" id="flight_type" value="Oneway"> One Way
                                 </label>
@@ -625,4 +520,5 @@
                 </div>
             </div>
         </div>
+
     @endsection
