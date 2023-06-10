@@ -272,7 +272,7 @@
                                     <div class="col-md-4 col-sm-4 search-col-padding">
                                         <label>Adult(s)</label>
                                         <br>
-                                        <input type="number" min="0" id="adult_count" name="padults" value="{{$padult}}"
+                                        <input type="number" min="1" id="adult_count" name="padults" value="{{$padult}}"
                                             class="form-control quantity-padding">
                                     </div>
                                     <div class="col-md-4 col-sm-4 search-col-padding">
@@ -293,7 +293,7 @@
                                             <span class="input-group-addon"><i class="fa fa-pencil"
                                                     aria-hidden="true"></i></span>
                                             <textarea name="inst" id="inst" rows="5" cols="5" class="form-control"
-                                                placeholder="Type here..."></textarea>
+                                                placeholder="Write what you wants to know...!"></textarea>
                                         </div>
                                     </div>
 

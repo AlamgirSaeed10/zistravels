@@ -1,14 +1,26 @@
 @extends('includes.master')
 @section('title', $title)
 @section('content')
+<style>
+    .top-bar-images {
+        display: flex;
+        justify-content: center;
+    }
+
+    .top-bar-images img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
     <div class="site-wrapper">
-        <div class="clearfix"></div>
-        <div class="row page-title contact-bg">
-            <div class="container clear-padding text-center flight-title">
-                <h3>CONTACT US</h3>
-                <h4 class="thank">Let's Get Connected</h4>
+        <section>
+            <div class="top-bar-images">
+                <img class="full-width-search" src="{{asset('assets/images/contact-us.png')}}" alt="Image">
             </div>
-        </div>
+        </section>
+
+        <div class="clearfix"></div>
         <div class="row contact-address">
             <div class="container clear-padding">
                 <div class="text-center">

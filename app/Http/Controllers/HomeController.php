@@ -138,8 +138,8 @@ class HomeController extends Controller
         $flight_type = $request->input(['flight_type']);
 
         $departure_parts = explode("-", $departure);
-$departure_day = $departure_parts[0];
-$departure_month = date('m', strtotime($departure_parts[1]));
+        $departure_day = $departure_parts[0];
+        $departure_month = date('m', strtotime($departure_parts[1]));
 
 
         // echo $departure;
@@ -296,15 +296,21 @@ $departure_month = date('m', strtotime($departure_parts[1]));
         $return = $request->return;
         $airline_name = $request->airline_name;
         $city = $request->city;
-        $padult = $request->padult;
+
+
+        $padult = $request->padults;
         $price_adult = $request->price_adult;
-        $pchild = $request->pchild;
+
+        $pchild = $request->pchildren;
         $price_child = $request->price_child;
-        $pinfant = $request->pinfant;
+
+        $pinfant = $request->pinfants;
         $price_infant = $request->price_infant;
+
         $ToAirportCode = $request->ToAirportCode;
         $FromAirportCode = $request->FromAirportCode;
         $flight_from = $request->flight_from;
+        $inst = $request->inst;
 
         $mail = new PHPMailer(true);
         try {
@@ -323,7 +329,7 @@ $departure_month = date('m', strtotime($departure_parts[1]));
             $mail->isHTML(true);
             $mail->Subject = 'Flight Booking Form Submission';
 
-            $mail->Body .= '<table class="table">';
+            $mail->Body .= '<table class="table table-bordered">';
             $mail->Body .= '<tr><td><strong class="text-capitalize">Customer Name:</strong></td><td>' . $cname . '</td></tr>';
             $mail->Body .= '<tr><td><strong class="text-capitalize">Customer Phone:</strong></td><td>' . $cphone . '</td></tr>';
             $mail->Body .= '<tr><td><strong class="text-capitalize">Customer Email:</strong></td><td>' . $cemail . '</td></tr>';
@@ -334,22 +340,24 @@ $departure_month = date('m', strtotime($departure_parts[1]));
             $mail->Body .= '<tr><td><strong class="text-capitalize">Airline Name:</strong></td><td>' . $airline_name . '</td></tr>';
             $mail->Body .= '<tr><td><strong class="text-capitalize">Flying From :</strong></td><td>' . $flight_from . '</td></tr>';
             $mail->Body .= '<tr><td><strong class="text-capitalize">Flying To:</strong></td><td>' . $flight_city . '</td></tr>';
-            $mail->Body .= '<tr><td><strong class="text-capitalize"># Adults:</strong></td><td>' . $padults . '</td></tr>';
+
+            if($padult > 0){
+                $mail->Body .= '<tr><td><strong class="text-capitalize"># Adults:</strong></td><td>' . $padults . '</td></tr>';
+                $mail->Body .= '<tr><td><strong class="text-capitalize">Adult Price:</strong></td><td>' . $price_adult . '</td></tr>';
+            } if($pchild > 0){
             $mail->Body .= '<tr><td><strong class="text-capitalize"># Children:</strong></td><td>' . $pchildren . '</td></tr>';
-            $mail->Body .= '<tr><td><strong class="text-capitalize"># Infants:</strong></td><td>' . $pinfants . '</td></tr>';
-            $mail->Body .= '<tr><td><strong class="text-capitalize">Adult Price:</strong></td><td>' . $price_adult . '</td></tr>';
             $mail->Body .= '<tr><td><strong class="text-capitalize">Child Price:</strong></td><td>' . $price_child . '</td></tr>';
-            $mail->Body .= '<tr><td><strong class="text-capitalize">Infant Price:</strong></td><td>' . $price_infant . '</td></tr>';
+            } if($pinfant > 0){
+                $mail->Body .= '<tr><td><strong class="text-capitalize"># Infants:</strong></td><td>' . $pinfants . '</td></tr>';
+                $mail->Body .= '<tr><td><strong class="text-capitalize">Infant Price:</strong></td><td>' . $price_infant . '</td></tr>';
+            }
+            $mail->Body .= '<tr><td><strong class="text-capitalize">Instructions:</strong></td><td>' . $inst . '</td></tr>';
             $mail->Body .= '</table>';
 
-
-
-
-
             $mail->send();
-            return view('pages.index',compact('title'))->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
+            return redirect()->route('home.index')->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Error occurred while sending the email.');
+            return redirect()->route('home.index')->with('error', 'Error occurred while sending the email.');
         }
 
     }

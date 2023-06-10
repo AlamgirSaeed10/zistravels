@@ -46,6 +46,11 @@
                                                     </ul>
                                                 </div>
                                             @endif
+                                            @if (session('success'))
+                                            <div class="alert alert-success text-center">
+                                                <strong>Success!...</strong> {!! session('success') !!}
+                                            </div>
+                                        @endif
                                                 <form autocomplete="off" method="post" action="{{ route('search.online_search') }}">
                                                     @csrf
                                                     <div class="row">

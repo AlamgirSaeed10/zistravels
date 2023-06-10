@@ -53,34 +53,34 @@
                     <!-- BEGIN: NAVIGATION -->
                     <div style="padding:0;" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active">
+                            <li class="{{request()->routeIs('home.index') ? 'active':'' }}">
                                 <a href="{{route('home.index')}}"> Home </a>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.cheap_flights') ? 'active':'' }}">
                                 <a href="{{route('home.cheap_flights')}}">Cheap Flights</a>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.business_class') ? 'active':'' }}">
                                 <a href="{{route('home.business_class')}}">Business Class</a>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.why_us') ? 'active':'' }}">
                                 <a href="{{route('home.why_us')}}"> Why Book With Us </a>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.booking_conditions') ? 'active':'' }}">
                                 <a href="{{route('home.booking_conditions')}}">Booking Condition</a>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.customer_faqs') ? 'active':'' }}">
                                 <a href="{{route('home.customer_faqs')}}">Faq's</a>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.about_us') ? 'active':'' }}">
                                 <a href="{{route('home.about_us')}}">About us</a>
                                 <div class="clearfix"></div>
                             </li>
-                            <li>
+                            <li class="{{request()->routeIs('home.contact_us') ? 'active':'' }}">
                                 <a href="{{route('home.contact_us')}}">Contact us </a>
                                 <div class="clearfix"></div>
                             </li>

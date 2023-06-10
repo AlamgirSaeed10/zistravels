@@ -2,6 +2,10 @@
 @section('title', $title)
 @section('content')
     <div class="site-wrapper">
+        <section>
+            <div class="row full-width-search single-search" style="background-image: url(assets/images/faqs.png);height:350px;">
+            </div>
+        </section>
     <section>
         <!-- START: FAQS -->
         <div style="padding-bottom:0;" class="row about-intro">
