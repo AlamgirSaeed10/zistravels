@@ -11,6 +11,7 @@ use DB;
 class HomeController extends Controller
 {
     function index(){
+
         $title="Zistravels";
         return view('pages.index',compact('title'));
     }
@@ -141,15 +142,6 @@ class HomeController extends Controller
         $departure_day = $departure_parts[0];
         $departure_month = date('m', strtotime($departure_parts[1]));
 
-
-        // echo $departure;
-        // echo "</br>";
-        // echo $departure_day;
-        // echo "</br>";
-        // echo $departure_month;
-        // echo "</br>";
-
-        // return $departure[1] ;
 
         $return_day = "";
         $return_month = "";

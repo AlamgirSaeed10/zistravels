@@ -119,9 +119,6 @@
                                             <h4 class="min_price" style="text-align:center;">£ <span
                                                     style="color:#FFD71E;">1415.2</span>/Person</h4>
                                         </div>
-                                        <!-- <div class="col-md-5 no-padding text-right">
-                                          <a href="tel:">Call Now</a>
-                                        </div> -->
                                     </div>
                                 </div>
 
@@ -328,7 +325,7 @@
                                 <h3>£545</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Addis-Ababa">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -344,7 +341,7 @@
                                 <h3>£834</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Manila">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -360,7 +357,7 @@
                                 <h3>£1022</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Denpasar">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -376,7 +373,7 @@
                                 <h3>£364</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Johannesburg">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -392,7 +389,7 @@
                                 <h3>£813</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Lusaka">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
                         <div class="col-grid">
@@ -406,7 +403,7 @@
                                 <h3>£373</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Lagos">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -424,7 +421,7 @@
                                 <p>21-Apr - 25-Jun</p>
 
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Freetown">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -440,7 +437,7 @@
                                 <h3>£557</h3>
                                 <p>21-Apr - 25-Jun</p>
                             </div>
-                            <div class="bottom"> <a href="/Flights-To-Nairobi">Enquire Now</a> </div>
+                            <div class="bottom"> <a href="{{route('home.contact_us')}}">Enquire Now</a> </div>
                         </div>
 
 
@@ -475,7 +472,7 @@
                         <div class="tour-detail text-center">
                             <p style="text-align:center"><strong><i class="fa fa-plane"></i>Heathrow</strong></p>
                             <p style="text-align:center"><strong>Starting £ 561/Person</strong></p>
-                            <p style="text-align:center"><a href="/Flights-To-Johannesburg">Enquire Now</a></p>
+                            <p style="text-align:center"><a href="{{route('home.contact_us')}}">Enquire Now</a></p>
                         </div>
                     </div>
 
@@ -495,7 +492,7 @@
                         <div class="tour-detail text-center">
                             <p style="text-align:center"><strong><i class="fa fa-plane"></i>Heathrow</strong></p>
                             <p style="text-align:center"><strong>Starting £ 413/Person</strong></p>
-                            <p style="text-align:center"><a href="/Flights-To-Accra">Enquire Now</a></p>
+                            <p style="text-align:center"><a href="{{route('home.contact_us')}}">Enquire Now</a></p>
                         </div>
                     </div>
 
@@ -515,7 +512,7 @@
                         <div class="tour-detail text-center">
                             <p style="text-align:center"><strong><i class="fa fa-plane"></i>Heathrow</strong></p>
                             <p style="text-align:center"><strong>Starting £ 834/Person</strong></p>
-                            <p style="text-align:center"><a href="/Flights-To-Manila">Enquire Now</a></p>
+                            <p style="text-align:center"><a href="{{route('home.contact_us')}}">Enquire Now</a></p>
                         </div>
                     </div>
 
@@ -535,7 +532,7 @@
                         <div class="tour-detail text-center">
                             <p style="text-align:center"><strong><i class="fa fa-plane"></i>Heathrow</strong></p>
                             <p style="text-align:center"><strong>Starting £ 575/Person</strong></p>
-                            <p style="text-align:center"><a href="/Flights-To-Banjul">Enquire Now</a></p>
+                            <p style="text-align:center"><a href="{{route('home.contact_us')}}">Enquire Now</a></p>
                         </div>
                     </div>
 
@@ -555,7 +552,7 @@
                         <div class="tour-detail text-center">
                             <p style="text-align:center"><strong><i class="fa fa-plane"></i>Heathrow</strong></p>
                             <p style="text-align:center"><strong>Starting £ 1057/Person</strong></p>
-                            <p style="text-align:center"><a href="/Flights-To-Denpasar">Enquire Now</a></p>
+                            <p style="text-align:center"><a href="{{route('home.contact_us')}}">Enquire Now</a></p>
                         </div>
                     </div>
 
@@ -572,7 +569,7 @@
                         <div class="tour-detail text-center">
                             <p style="text-align:center"><strong><i class="fa fa-plane"></i>Heathrow</strong></p>
                             <p style="text-align:center"><strong>Starting £ 600/Person</strong></p>
-                            <p style="text-align:center"><a href="/Flights-To-Nairobi">Enquire Now</a></p>
+                            <p style="text-align:center"><a href="{{route('home.contact_us')}}">Enquire Now</a></p>
                         </div>
                     </div>
                 </div>

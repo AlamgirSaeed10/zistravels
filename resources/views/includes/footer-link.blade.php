@@ -8,7 +8,7 @@
                         products with matchless Services at economical rates to all parts of the world by making
                         reservation
                         procedure simpler, easier and faster. Achieving customer satisfaction is our ultimate goal. </p>
-                    <a href="3">READ MORE</a>
+                    <a href="{{route('home.about_us')}}">READ MORE</a>
                 </div>
                 <div class="clearfix visible-sm-block"></div>
                 <div class="col-lg-offset-1 col-lg-3 col-md-4 col-sm-6 col-xs-12 links">
@@ -35,9 +35,9 @@
                     </p>
                     <p>
                         <i class="fa fa-whatsapp"></i>
-                        <a style="color:#FFF;"
-                            href="https://api.whatsapp.com/send?phone=&amp;text=I'm%20interested%20in%20flights%20deals">
-                            <span style="font-size: 16px;">000000000000</span>
+                        <a style="color:#FFF;" target="_blank"
+                            href="https://api.whatsapp.com/send?phone=442086388185&amp;text=I'm%20interested%20in%20flights%20deals">
+                            <span style="font-size: 16px;">+44 208 638 8185</span>
                         </a>
                     </p>
                     <p>
@@ -143,9 +143,9 @@
 
 <!--Footer End-->
 <!--Whatsapp-->
-<a href="https://api.whatsapp.com/send?phone=&amp;text=I'm interested in flights deals"
+<a href="https://api.whatsapp.com/send?phone=442086388185&amp;text=I'm interested in flights deals"
     style="position: fixed;left: 15px;bottom: 20px;z-index: 999;" target="_blank" title="Send Whatsapp Message">
-    <img src="assets/images/whatsapp.png" style="max-width:60px" alt="whatsapp">
+    <img src="{{asset('assets/images/whatsapp.png')}}" style="max-width:60px" alt="whatsapp">
 </a>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
