@@ -19,13 +19,16 @@
                     <span class="icon-bar"></span>
                   </button>
                   <div class="trustpilot hidden-xs hidden-sm hidden-md">
-                    <img src="{{asset('assets/images/trustpilotstar.png')}}" alt="Trust Pilot Reviews">
+                    <a href="https://www.trustpilot.com/review/zistravels.co.uk" target="_blank">
+                        <img src="{{asset('assets/images/trustpilotstar.png')}}" alt="Trust Pilot Reviews">
+                    </a>
                   </div>
                   <ul class="top-header-contact">
                     <li style="margin-top:10px;">
                       <h1 class="call-icon"><a href="tel:08003683970">
                           <i class="fa fa-phone"></i>
-                          <font><span class="tol-free" style="float: left;margin-top: 10px;">0800 368 3970</span></font>
+                          <font><span class="tol-free" style="float: left;margin-top: 10px;">0800 368
+                          3970</span></font>
                         </a>
                       </h1>
                     </li>

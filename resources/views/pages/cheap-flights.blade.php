@@ -455,18 +455,14 @@
                         <h1>TOP DESTINATION</h1>
                         <h4>CHECK OUT FLIGHTS TO TOP DESTINATIONS</h4>
                     </div>
-
-
-
-
-                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="assets/images/destinations/JNB.jpg"
+                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="{{asset('assets/images/destinations/JNB.jpg')}}"
                             alt="Top Flight Destinations - Johannesburg Flights">
                         <div class="tour-brief">
                             <div class="pull-left">
-                                <h4><i class="fa fa-map-marker"></i>JOHANNESBURG</h4>
+                                <h4 class="text-white"><i class="fa fa-map-marker"></i>JOHANNESBURG</h4>
                             </div>
                             <div class="pull-right">
-                                <h4>£ 561/Person</h4>
+                                <h4 class="text-white">£ 561/Person</h4>
                             </div>
                         </div>
                         <div class="tour-detail text-center">
@@ -479,14 +475,14 @@
 
 
 
-                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="assets/images/destinations/ACC.jpg"
+                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="{{asset('assets/images/destinations/ACC.jpg')}}"
                             alt="Top Flight Destinations - Accra Flights">
                         <div class="tour-brief">
                             <div class="pull-left">
-                                <h4><i class="fa fa-map-marker"></i>ACCRA</h4>
+                                <h4 class="text-white" ><i class="fa fa-map-marker"></i>ACCRA</h4>
                             </div>
                             <div class="pull-right">
-                                <h4>£ 413/Person</h4>
+                                <h4 class="text-white" >£ 413/Person</h4>
                             </div>
                         </div>
                         <div class="tour-detail text-center">
@@ -499,14 +495,14 @@
 
 
 
-                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="assets/images/destinations/MNL.jpg"
+                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="{{asset('assets/images/destinations/MNL.jpg')}}"
                             alt="Top Flight Destinations - Manila Flights">
                         <div class="tour-brief">
                             <div class="pull-left">
-                                <h4><i class="fa fa-map-marker"></i>MANILA</h4>
+                                <h4 class="text-white"><i class="fa fa-map-marker"></i>MANILA</h4>
                             </div>
                             <div class="pull-right">
-                                <h4>£ 834/Person</h4>
+                                <h4 class="text-white">£ 834/Person</h4>
                             </div>
                         </div>
                         <div class="tour-detail text-center">
@@ -519,14 +515,14 @@
 
 
 
-                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="assets/images/destinations/BJL.jpg"
+                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="{{asset('assets/images/destinations/BJL.jpg')}}"
                             alt="Top Flight Destinations - Banjul Flights">
                         <div class="tour-brief">
                             <div class="pull-left">
-                                <h4><i class="fa fa-map-marker"></i>BANJUL</h4>
+                                <h4 class="text-white"><i class="fa fa-map-marker"></i>BANJUL</h4>
                             </div>
                             <div class="pull-right">
-                                <h4>£ 575/Person</h4>
+                                <h4 class="text-white">£ 575/Person</h4>
                             </div>
                         </div>
                         <div class="tour-detail text-center">
@@ -539,14 +535,14 @@
 
 
 
-                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="assets/images/destinations/DPS.jpg"
+                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="{{asset('assets/images/destinations/DPS.jpg')}}"
                             alt="Top Flight Destinations - Denpasar Flights">
                         <div class="tour-brief">
                             <div class="pull-left">
-                                <h4><i class="fa fa-map-marker"></i>DENPASAR</h4>
+                                <h4 class="text-white"><i class="fa fa-map-marker"></i>DENPASAR</h4>
                             </div>
                             <div class="pull-right">
-                                <h4>£ 1057/Person</h4>
+                                <h4 class="text-white">£ 1057/Person</h4>
                             </div>
                         </div>
                         <div class="tour-detail text-center">
@@ -556,14 +552,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="assets/images/destinations/NBO.jpg"
+                    <div class="col-md-4 col-sm-6 tour-grid clear-padding"> <img src="{{asset('assets/images/destinations/NBO.jpg')}}"
                             alt="Top Flight Destinations - Nairobi Flights">
-                        <div class="tour-brief">asdsad
+                        <div class="tour-brief">
                             <div class="pull-left">
-                                <h4><i class="fa fa-map-marker"></i>NAIROBI</h4>
+                                <h4 class="text-white"><i class="fa fa-map-marker"></i>NAIROBI</h4>
                             </div>
                             <div class="pull-right">
-                                <h4>£ 600/Person</h4>
+                                <h4 class="text-white">£ 600/Person</h4>
                             </div>
                         </div>
                         <div class="tour-detail text-center">

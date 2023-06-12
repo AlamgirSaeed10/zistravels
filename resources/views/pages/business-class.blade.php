@@ -66,7 +66,7 @@
                                 <p>21-Apr - 25-Jun</p>
 
                         </div>
-                        <div class="bottom"> <a href="/Flights-To-Lusaka">BOOK NOW</a> </div>
+                        <div class="bottom"> <a href="{{route('home.contact_us')}}">BOOK NOW</a> </div>
                     </div>
 
 
