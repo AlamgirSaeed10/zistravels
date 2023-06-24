@@ -4,7 +4,6 @@
     $ToFlightParts = explode(' - ', $flight_to);
     $FromAirportCode = end($FromFlightParts);
     $ToAirportCode = end($ToFlightParts);
-
 @endphp
 @extends('includes.master')
 @section('title', $title)
@@ -14,17 +13,60 @@
             border: 1px solid;
             padding: 10px;
         }
+
+        .carousel {
+//           width: 500px;
+          height: 300px;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .carousel-item {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .carousel-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .carousel-item.active {
+          display: block;
+        }
+
     </style>
+
+
+
     <div class="site-wrapper">
         <div class="row">
             <div class="container" style="margin-left: 10%; margin-right: 10%;">
                 <!-- START: INDIVIDUAL LISTING AREA -->
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col-lg-push-3 flight-listing">
                     <!-- START: LOWEST FARE SLIDER -->
-                    <div class="lowest-fare-slider col-xs-12">
-                        <img src="{{ asset('assets/images/images/hunting-better-ig.png') }}"
-                            class="img-responsive just-call-banner" alt="Call Now & get Best deals">
-                    </div>
+
+                   <div class="carousel hidden-sm hidden-xs mt-5">
+                     <div class="carousel-item">
+                       <img src="{{asset('assets/images/faqs.png')}}" alt="Image 1">
+                     </div>
+                     <div class="carousel-item">
+                       <img src="{{asset('assets/images/faqs-.png')}}" alt="Image 2">
+                     </div>
+                     <div class="carousel-item">
+                       <img src="{{asset('assets/images/why-us.png')}}" alt="Image 3">
+                     </div>
+                   </div>
+
+
+
+
+
                     <a href="{{ route('home.online_enquiry') }}">online </a>
                     @if (session('error'))
                         <div class="alert alert-danger">
@@ -32,7 +74,7 @@
                         </div>
                     @endif
                     <!-- END: LOWEST FARE SLIDER -->
-                    <div class="row">
+                    <div class="row mt-5">
                         <div class="col-md-12 clear-padding result-section ">
                             <div role="tabpanel">
                                 <!-- BEGIN: CATEGORY TAB -->
@@ -324,13 +366,13 @@
                                                                 </div>
                                                                 <div class="col-xs-6 clear-padding">
                                                                     <div class="add-to-link">
-                                                                        <a class="call_now" href="tel:02079936068">
+                                                                        <a class="call_now" href="tel:08003683970">
                                                                             <div><i class="fa fa-phone"></i><span>Call
                                                                                     Now</span></div>
                                                                         </a>
                                                                         <a class="book_now" href="">
-                                                                            <div><i class="fa fa-check"></i><span>Book
-                                                                                    Now</span></div>
+                                                                            <div><i class="fa fa-check"></i>
+                                                                                   </div>
                                                                         </a>
                                                                         <a class="whatsapp_now" href=""
                                                                             target="_blank">
@@ -568,5 +610,23 @@
                 </div>
             </div>
         </div>
+        <script>
+        let currentSlide = 0;
+        const carouselItems = document.querySelectorAll('.carousel-item');
+
+        function showSlide(index) {
+          carouselItems.forEach(item => item.classList.remove('active'));
+          carouselItems[index].classList.add('active');
+        }
+
+        function nextSlide() {
+          currentSlide++;
+          if (currentSlide >= carouselItems.length) {
+            currentSlide = 0;
+          }
+          showSlide(currentSlide);
+        }
+        setInterval(nextSlide, 3000);
+</script>
 
     @endsection
