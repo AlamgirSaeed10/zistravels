@@ -1,4 +1,5 @@
 @extends('includes.master')
+@section('title', $title)
 @section('content')
     <div class="site-wrapper">
         <div class="row page-title enqury-page-bnr">
@@ -181,7 +182,7 @@
                                     Infants)
                                 </p>
                                 <h2 style="font-weight:bold;" class="text-center">£
-                                    {{ $pinfant * $price_infant + $padult * $price_adult + $pchild * $price_child }}
+                                    {{ ($pinfant * $price_infant) + ($padult * $price_adult) + ($pchild * $price_child) }}
                                 </h2>
                                 <h6 class="text-center">Return, Including Taxes.<br>
                                     Subject to Availability</h6>
@@ -190,12 +191,17 @@
                         </div>
 
                     </div>
-
-                    <div class="col-xs-12" style="margin-bottom:15px;">
-                        <a href="tel:00442079936068">
-                            <img class="img-responsive" src="assets/images/call-us.png" alt="">
-                        </a>
-                    </div>
+                    
+                       @if (session('success'))
+                            <div class="alert alert-success text-center">
+                                <strong>Success!...</strong> {!! session('success') !!}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger text-center">
+                                <strong>Error!...</strong> {!! session('error') !!}
+                            </div>
+                        @endif
 
                     <div class="col-xs-12">
 
@@ -265,7 +271,7 @@
                                         <label>Return</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
-                                            <input value="{{$return}}" type="text" id="return_date" required
+                                            <input value="{{$return}}" type="text" id="return_date"
                                                 class="form-control" name="return_date" placeholder="DD/MM/YYYY">
                                         </div>
                                     </div>
@@ -273,7 +279,7 @@
                                         <label>Adult(s)</label>
                                         <br>
                                         <input type="number" min="1" id="adult_count" name="padults" value="{{$padult}}"
-                                            class="form-control quantity-padding">
+                                            class="form-control quantity-padding" required>
                                     </div>
                                     <div class="col-md-4 col-sm-4 search-col-padding">
                                         <label>Child(ren)</label>

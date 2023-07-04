@@ -59,19 +59,19 @@
     </main>
     @include('includes.footer-link')
 
-    <script src="{{asset('assets/js/respond.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.js')}}"></script>
-    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/wow.min.js')}}"></script>
-    <script src="{{asset('assets/js/supersized.3.1.3.min.js')}}"></script>
-    <script src="{{asset('assets/js/typeahead.bundle.js')}}"></script>
-    <script src="{{asset('assets/js/sticky.js')}}"></script>
-    <script src="{{asset('assets/js/js.js')}}"></script>
-    <script src="{{asset('assets/js/homejs.js')}}"></script>
-    <script src="{{asset('assets/js/search.js')}}"></script>
+    <script src="{{asset('public/assets/js/respond.js')}}"></script>
+    <script src="{{asset('public/assets/js/jquery.js')}}"></script>
+    <script src="{{asset('public/assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/wow.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/supersized.3.1.3.min.js')}}"></script>
+    <script src="{{asset('public/assets/js/typeahead.bundle.js')}}"></script>
+    <script src="{{asset('public/assets/js/sticky.js')}}"></script>
+    <script src="{{asset('public/assets/js/js.js')}}"></script>
+    <script src="{{asset('public/assets/js/homejs.js')}}"></script>
+    <script src="{{asset('public/assets/js/search.js')}}"></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-64P4X6J7QW"></script>
 <script>

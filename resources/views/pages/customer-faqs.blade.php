@@ -7,10 +7,18 @@
 
     <style>
         .faq-container {
-        max-width: 50%;
+        max-width: 75%;
         margin: 0 auto;
         padding: 20px;
     }
+    
+
+@media screen and (max-width: 768px) {
+  .faq-container {
+    max-width: 100%;
+  }
+}
+
 
     .faq-question {
         cursor: pointer;
@@ -35,10 +43,13 @@
     </style>
     </head>
     <div class="site-wrapper">
-        <section>
-            <div class="row full-width-search single-search" style="background-image: url(assets/images/faqs.png);height:350px;">
+        
+        <section class="hidden-sm">
+            <div class="row" style="margin: 0; padding: 0;">
+              <img src="{{ asset('assets/images/faqs.png') }}" style="display: block; width: 100%; height: auto;">
             </div>
         </section>
+        
 
         <div class="faq-container">
             <div class="text-center">

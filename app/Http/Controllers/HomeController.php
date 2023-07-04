@@ -7,11 +7,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Http\Request;
 use DB;
+use App\BloggerClient;
 
 class HomeController extends Controller
 {
+    function maintenance(){
+        $title="Zistravels";
+        return view('welcome',compact('title'));
+    }
     function index(){
-
         $title="Zistravels";
         return view('pages.index',compact('title'));
     }
@@ -36,7 +40,7 @@ class HomeController extends Controller
         return view('pages.customer-reviews',compact('title'));
     }
     function customer_faqs(){
-        $title="customer FAQ's ";
+        $title="Customer FAQ's ";
         return view('pages.customer-faqs',compact('title'));
     }
     function privacy_policy(){
@@ -57,7 +61,8 @@ class HomeController extends Controller
     }
     function blogs(){
         $title="Blogs";
-        return view('pages.blogs',compact('title'));
+        $posts = BloggerClient::getAllBlogPosts(env('BLOGGER_BLOG_ID'));
+        return view('pages.blogs',compact('title','posts'));
     }
     function submitContactForm(Request $request){
         $validatedData = $request->validate([
@@ -79,30 +84,30 @@ class HomeController extends Controller
 
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 0;
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'muhammadalamgir10@gmail.com';
-            $mail->Password = 'znensgwmxpgeflzi';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
-            $mail->setFrom($request->email, $request->name);
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username = 'zistravels3@gmail.com';
+                $mail->Password = 'bjiiolpvqflfksjl';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
 
-            $mail->addAddress('mursaleen@zistravels.co.uk', 'Contact Us form');
+                $mail->setFrom('info@zistravels.co.uk', 'Sender');
+                $mail->addAddress('info@zistravels.co.uk', $request->name);
+                $mail->isHTML(true);
 
-            $mail->isHTML(true);
-            $mail->Subject = 'Contact Form Submission';
-            $mail->Body = "Name: {$validatedData['name']}<br>";
-            $mail->Body .= "Email: {$validatedData['email']}<br>";
-            $mail->Body .= "Phone: {$validatedData['phone']}< br>";
-            $mail->Body .= "Category: {$validatedData['category']}<br>";
-            $mail->Body .= "Comment: {$validatedData['comment']}<br>";
+                $mail->Subject = 'Contact Form Submission';
+                $mail->Body = "Name: {$validatedData['name']}<br>";
+                $mail->Body .= "Email: {$validatedData['email']}<br>";
+                $mail->Body .= "Phone: {$validatedData['phone']}< br>";
+                $mail->Body .= "Category: {$validatedData['category']}<br>";
+                $mail->Body .= "Comment: {$validatedData['comment']}<br>";
 
-            $mail->send();
-            return redirect()->route('home.index')->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
+                $mail->send();
+                return redirect()->route('home.index')->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Error occurred while sending the email.');
+            return redirect()->back()->with('error', 'Error occurred while sending the email.'.$e);
         }
     }
     function newsletterForm(Request $request){
@@ -127,7 +132,76 @@ class HomeController extends Controller
         }
     }
     function online_search(Request $request){
-        $title = "online Search";
+        $title = "Online Search";
+         if($request->flight_type == 'Return')
+        {
+         $validatedData = $request->validate([
+            'flight_from' =>'required',
+            'flight_to' =>'required',
+            'customer_name' =>'required',
+            'customer_email' =>'required',
+            'customer_phone' =>'required',
+            'departure_date' =>'required',
+            'return_date' =>'required',
+            'g-recaptcha-response' => 'required'
+        ], [
+            'flight_from.required' => 'Departure City is required.',
+            'flight_to.required' => 'Destination city is required.',
+            'departure_date.required' => 'Departure Date is required.',
+            'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
+        ]);
+
+        }else{
+            $validatedData = $request->validate([
+            'flight_from' =>'required',
+            'flight_to' =>'required',
+            'customer_name' =>'required',
+            'customer_email' =>'required',
+            'customer_phone' =>'required',
+            'departure_date' =>'required',
+            'g-recaptcha-response' => 'required'
+        ], [
+            'flight_from.required' => 'Departure City is required.',
+            'flight_to.required' => 'Destination city is required.',
+            'departure_date.required' => 'Departure Date is required.',
+            'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
+        ]);
+        }
+
+
+
+         $mail = new PHPMailer(true);
+        try {
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username = 'zistravels3@gmail.com';
+                $mail->Password = 'bjiiolpvqflfksjl';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('info@zistravels.co.uk', 'Sender');
+                $mail->addAddress('info@zistravels.co.uk', $request->name);
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Searched Flight Data';
+                $mail->Body  = "Flight from: {$validatedData['flight_from']}<br>";
+                $mail->Body .= "Flight to: {$validatedData['flight_to']}<br>";
+                $mail->Body .= "Flight Type: {$request->flight_type}<br>";
+                $mail->Body .= "Customer name: {$validatedData['customer_name']}<br>";
+                $mail->Body .= "Customer email: {$validatedData['customer_email']}<br>";
+                $mail->Body .= "Customer phone: {$validatedData['customer_phone']}<br>";
+                $mail->Body .= "Departure date: {$validatedData['departure_date']}<br>";
+                if($request->return_date != null){
+                $mail->Body .= "Return date: {$request->return_date}<br>";
+                }
+
+                $mail->send();
+        $customer_name = $request->customer_name;
+        $customer_email = $request->customer_email;
+        $customer_phone = $request->customer_phone;
+
         $flight_from = $request->input(['flight_from']);
         $flight_to = $request->input(['flight_to']);
         $departure = $request->input(['departure_date']);
@@ -138,10 +212,11 @@ class HomeController extends Controller
         $cabin_class = $request->input(['cabin_class']);
         $flight_type = $request->input(['flight_type']);
 
+
+
         $departure_parts = explode("-", $departure);
         $departure_day = $departure_parts[0];
         $departure_month = date('m', strtotime($departure_parts[1]));
-
 
         $return_day = "";
         $return_month = "";
@@ -153,7 +228,7 @@ class HomeController extends Controller
         $flights = [];
 
         $airports = DB::table('airports')->get();
-        foreach($airports as $row) {
+        foreach ($airports as $row) {
             if ($flight_from == $row->city . " - " . $row->code) {
                 if ($row->percentage < 0) {
                     $percentage = abs($row->percentage);
@@ -174,18 +249,18 @@ class HomeController extends Controller
         }
 
         $departure_day = (int) $departure_day;
-        $col = ($departure_month < 10 && $departure_month > 0) ? "col{$departure_month}" : "col{$departure_month}";
+        $col = "col" . str_pad($departure_month, 2, '0', STR_PAD_LEFT);
 
         $outbound_percentage = DB::table('percentage')->where('id', $departure_day)->value($col);
 
-
         if (!empty($return)) {
             $return_day = explode("-", $return)[0];
-            $return_month = $return[1];
+            $return_month = date('m', strtotime(explode("-", $return)[1]));
             $return_day = (int) $return_day;
-            $col_r = ($return_month < 10 && $return_month > 0) ? "col0{$return_month}" : "col{$return_month}";
+            $col_r = "col" . str_pad($return_month, 2, '0', STR_PAD_LEFT);
             $inbound_percentage = DB::table('percentage')->where('id', $return_day)->value($col_r);
         }
+
 
         if (session()->getId() === '') {
             session()->start();
@@ -241,12 +316,20 @@ class HomeController extends Controller
 
             $row->price_percentage_added = round($row->price_adult + $row->price_children + $row->price_infant);
         }
-        return view('pages.search-results', compact('title','flights','flight_from','flight_to','departure','return','cabin_class','flight_type','padult', 'pchild','pinfant'));
+
+
+        return view('pages.search-results', compact('title','flights','flight_from','flight_to','departure','return','cabin_class','flight_type','padult', 'pchild','pinfant','customer_name','customer_email','customer_phone'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', 'Error occurred while sending the email.'.$e);
+        }
     }
     function online_enquiry(){
-        return view('pages.online-flight-enquery');
+        $title = "Online Enquiry";
+        return view('pages.online-flight-enquery',compact('title'));
     }
     function enquiry_form(Request $request){
+
+        $title = "Enquiry Form";
 
         $flight_city = $request->input(['flight_city']);
         $flight_type = $request->input(['flight_type']);
@@ -267,12 +350,11 @@ class HomeController extends Controller
         $pchild = $request->input(['pchild']);
         $airline_image = $request->input(['airline_image']);
 
-        return view('pages.online-flight-enquery',compact( 'flight_city', 'flight_type','cabin_class','departure','return','price_adult','airline_name','city','ToAirportCode',
+        return view('pages.online-flight-enquery',compact('title','flight_city', 'flight_type','cabin_class','departure','return','price_adult','airline_name','city','ToAirportCode',
             'flight_to','airline_image','FromAirportCode','flight_from','pinfant','padult','pchild','price_child','price_infant'));
     }
-
     function submit_enquery(Request $request){
-        $title = "Zistravels - ";
+        $title = "Flight Enquiry ";
         $cname = $request->cname;
         $cphone = $request->cphone;
         $cemail = $request->cemail;
@@ -306,17 +388,18 @@ class HomeController extends Controller
 
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 0;
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'muhammadalamgir10@gmail.com';
-            $mail->Password = 'znensgwmxpgeflzi';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
-            $mail->setFrom($cemail, $cname);
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username = 'zistravels3@gmail.com';
+                $mail->Password = 'bjiiolpvqflfksjl';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
 
-            $mail->addAddress('muhammadalamgir10@gmail.com', 'Flight Booking Detail');
+                $mail->setFrom('info@zistravels.co.uk', 'Sender');
+                $mail->addAddress('info@zistravels.co.uk', $cname);
+
 
             $mail->isHTML(true);
             $mail->Subject = 'Flight Booking Form Submission';
@@ -347,12 +430,14 @@ class HomeController extends Controller
             $mail->Body .= '</table>';
 
             $mail->send();
-            return redirect()->route('home.index')->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
+           return redirect()->route('home.index')->with('success', 'Thank you for contacting <b>Zistravels UK</b>. Our team will contact you shortly!');
         } catch (Exception $e) {
-            return redirect()->route('home.index')->with('error', 'Error occurred while sending the email.');
+            return redirect()->back()->with('error', 'Error occurred while sending the email.'.$e);
+            // return $e;
         }
 
     }
+
 
 
 }

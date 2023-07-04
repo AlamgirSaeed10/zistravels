@@ -161,13 +161,13 @@
         s0.parentNode.insertBefore(s1, s0);
 
         // Add custom image
-        var customImage = document.createElement("img");
-        customImage.src = "https://embed.tawk.to/_s/v4/assets/images/attention-grabbers/163-r-br.svg";
-        customImage.style.position = "fixed";
-        customImage.style.bottom = "100px";
-        customImage.style.right = "20px";
-        customImage.style.width = "160px"; // Adjust the size of the image as needed
-        document.body.appendChild(customImage);
+        // var customImage = document.createElement("img");
+        // customImage.src = "https://embed.tawk.to/_s/v4/assets/images/attention-grabbers/163-r-br.svg";
+        // customImage.style.position = "fixed";
+        // customImage.style.bottom = "100px";
+        // customImage.style.right = "20px";
+        // customImage.style.width = "160px"; // Adjust the size of the image as needed
+        // document.body.appendChild(customImage);
     })();
 </script>
 

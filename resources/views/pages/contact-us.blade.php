@@ -14,11 +14,12 @@
 </style>
 
     <div class="site-wrapper">
-        <section>
-            <div class="top-bar-images">
-                <img class="full-width-search" src="{{asset('assets/images/contact-us.png')}}" alt="Image">
+        <section class="hidden-sm">
+            <div class="row" style="margin: 0; padding: 0;">
+              <img src="{{ asset('assets/images/contact-us.png') }}" style="display: block; width: 100%; height: auto;">
             </div>
         </section>
+
 
         <div class="clearfix"></div>
         <div class="row contact-address">
@@ -30,7 +31,9 @@
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <i class="fa fa-whatsapp"></i>
-                        <p>00000000</p>
+                        <p><a style="color:#FFF;" target="_blank" href="https://api.whatsapp.com/send?phone=442086388185&amp;text=I'm%20interested%20in%20flights%20deals">
+                            <span style="font-size: 16px;">+44 208 638 8185</span>
+                        </a></p>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <i class="fa fa-envelope-o"></i>
@@ -63,6 +66,11 @@
                         @if (session('success'))
                             <div class="alert alert-success text-center">
                                 <strong>Success!...</strong> {!! session('success') !!}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger text-center">
+                                <strong>Error!...</strong> {!! session('error') !!}
                             </div>
                         @endif
 
@@ -107,7 +115,7 @@
                             <div class="col-md-12">
                                 <div class="office-address">
                                     <p><b>Office:</b> 202 Wexham Rd, Slough SL2 5JP, United Kingdom</p>
-                                    <p class="registerd-company">Reliance Travels Limited is registered in <b>England</b>.
+                                    <p class="registerd-company">Zistravels Limited is registered in <b>England</b>.
                                     </p>
                                 </div>
                             </div>

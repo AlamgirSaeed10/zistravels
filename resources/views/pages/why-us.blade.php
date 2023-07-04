@@ -2,8 +2,9 @@
 @section('title', $title)
 @section('content')
     <div class="site-wrapper">
-        <section>
-            <div class="row full-width-search single-search" style="background-image: url(assets/images/why-us.png);height:350px;">
+        <section class="hidden-sm">
+            <div class="row" style="margin: 0; padding: 0;">
+              <img src="{{ asset('assets/images/why-us.png') }}" style="display: block; width: 100%; height: auto;">
             </div>
         </section>
     <section>

@@ -4,6 +4,7 @@
     $ToFlightParts = explode(' - ', $flight_to);
     $FromAirportCode = end($FromFlightParts);
     $ToAirportCode = end($ToFlightParts);
+
 @endphp
 @extends('includes.master')
 @section('title', $title)
@@ -13,68 +14,69 @@
             border: 1px solid;
             padding: 10px;
         }
+.button-container {
+  display: flex;
+  /*justify-content: space-between;*/
+  margin:5px;
+}
 
-        .carousel {
-//           width: 500px;
-          height: 300px;
-          overflow: hidden;
-          position: relative;
-        }
+.button-container a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: width 0.3s ease;
+}
 
-        .carousel-item {
-          display: none;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-        }
+.button-container a:hover span {
+  opacity: 1;
+}
+.button-container a:hover {
+  color:#ffdd26;
+}
 
-        .carousel-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .carousel-item.active {
-          display: block;
-        }
+.whatsapp-button{
+    background-color: #24a417;
+    color: #fff;
+    font-size: 20px;
+    width:50%;
+}
+.call-button{
+    background-color: #015f9e;
+    color: #fff;
+    font-size: 20px;
+    width:50%;
+}
+.book-button{
+    background-color: #e55556;
+    color: #fff;
+    font-size: 20px;
+}
+#book{
+    width:100%;
+}
 
     </style>
-
-
-
     <div class="site-wrapper">
         <div class="row">
-            <div class="container" style="margin-left: 10%; margin-right: 10%;">
+            <div class="container" >
                 <!-- START: INDIVIDUAL LISTING AREA -->
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col-lg-push-3 flight-listing">
                     <!-- START: LOWEST FARE SLIDER -->
-
-                   <div class="carousel hidden-sm hidden-xs mt-5">
-                     <div class="carousel-item">
-                       <img src="{{asset('assets/images/faqs.png')}}" alt="Image 1">
-                     </div>
-                     <div class="carousel-item">
-                       <img src="{{asset('assets/images/faqs-.png')}}" alt="Image 2">
-                     </div>
-                     <div class="carousel-item">
-                       <img src="{{asset('assets/images/why-us.png')}}" alt="Image 3">
-                     </div>
-                   </div>
-
-
-
-
-
-                    <a href="{{ route('home.online_enquiry') }}">online </a>
+                    <div class="lowest-fare-slider col-xs-12">
+                        <img src="{{ asset('assets/images/images/hunting-better-ig.png') }}"
+                            class="img-responsive just-call-banner" alt="Call Now & get Best deals">
+                    </div>
+                   
                     @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
                         </div>
                     @endif
                     <!-- END: LOWEST FARE SLIDER -->
-                    <div class="row mt-5">
+                    <div class="row">
                         <div class="col-md-12 clear-padding result-section ">
                             <div role="tabpanel">
                                 <!-- BEGIN: CATEGORY TAB -->
@@ -102,8 +104,8 @@
                                                 style="text-align:center; margin-top:15px; background-color:#F3F3F3; padding:23px; border:#FFD701 3px solid;">
                                                 <div class="visible-lg visible-md visible-sm visible-xs"
                                                     style="margin-left: 5px; margin-right: 5px;">
-                                                    <h4 class="text-center"> No data found for your search but don't worry
-                                                        <br><br> contact us at 000000000000 we will arrange a flight for
+                                                    <h4 class="text-center"> No flight found for your search but don't worry
+                                                        <br><br> contact us at <a href="08003683970"><b>0800 368 3970<b></a> we will arrange a flight for
                                                         you.
                                                     </h4>
                                                 </div>
@@ -273,8 +275,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div
+                                                      <div
                                                             class="col-lg-3 col-md-3 col-sm-12 col-xs-12 clear-padding price_section">
                                                             <div class="price_details hidden-xs hidden-sm">
                                                                 <div class="price">
@@ -284,7 +285,7 @@
                                                                     <p
                                                                         class="{{ $padult != null ? '' : 'hidden' }} {{ $pchild != null ? '' : 'hidden' }} {{ $pinfant != null ? '' : 'hidden' }}">
                                                                         {{ $padult }}
-                                                                        Adult{{ $pchild != null ? ',' . $pchild . ' child' : '' }}{{ $pinfant != null ? ',' . $pinfant . ' infaint' : '' }}
+                                                                        Adult{{ $pchild != null ? ',' . $pchild . ' child' : '' }}{{ $pinfant != null ? ',' . $pinfant . ' infant' : '' }}
                                                                     </p>
 
                                                                     <h6>
@@ -296,14 +297,14 @@
                                                                     <span class="text-danger">*</span>
                                                                     Return, Inc. Taxes
                                                                 </sub>
-                                                                <div class="add-to-link">
-                                                                    <a class="call_now" href="tel:0000000">
-                                                                        <div><i class="fa fa-phone"></i><span>000 0000
-                                                                                0000</span></div>
+                                                             
+                                                                <div class="button-container">
+                                                                   <a class="call-button" title="Call Us Now" href="tel:08003683970">
+                                                                        <i class="fa fa-phone"></i>
                                                                     </a>
 
 
-                                                                    <form method="post" action="{{route('home.enquiry_form')}}">
+                                                                    <form id="bookingForm{{$key}}"  method="post" action="{{route('home.enquiry_form')}}">
                                                                         @csrf
                                                                         <input type="hidden" name="flight_city" value="{{$flights[0]->city }}">
                                                                         <input type="hidden" name="flight_type" value="{{$flight_type }}">
@@ -330,34 +331,18 @@
                                                                         <input type="hidden" name="pinfant" value="{{$pinfant }}">
                                                                         <input type="hidden" name="airline_image" value="{{$value->image }}">
 
-                                                                        <button class="book_now"><i class="fa fa-check"></i><span>Book Now</span></button>
-
-
-                                                                       {{-- <a href="" class="book_now"><i class="fa fa-check"></i><span>Book Now</span></a> --}}
+                                                                        <!--<button class="book_now"><i class="fa fa-check"></i><span>Book Now</span></button>-->
+                                                                      <a class="book-button" id="book" title="Book Now" href="javascript:void(0);" onclick="submitBookingForm({{ $key }})">
+                                                                        <i class="fa fa-plane"></i>
+                                                                          </a>
                                                                     </form>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                    <a class="whatsapp_now" href="#"
-                                                                        target="_blank">
-                                                                        <div><i
-                                                                                class="fa fa-whatsapp"></i><span>Whatsapp</span>
-                                                                        </div>
-                                                                    </a>
+                                                                   <a class="whatsapp-button" title="Whatsapp" href="https://api.whatsapp.com/send?phone=442086388185&amp;" target="_blank">
+								                                    <i class="fa fa-whatsapp"></i>
+								                                    </a>
                                                                 </div>
-
-                                                            </div>
+                                                                </div>
                                                             <div class="row visible-sm visible-xs">
                                                                 <div class="col-xs-6 clear-padding">
                                                                     <h3 class="mob_price">£
@@ -370,20 +355,21 @@
                                                                             <div><i class="fa fa-phone"></i><span>Call
                                                                                     Now</span></div>
                                                                         </a>
-                                                                        <a class="book_now" href="">
-                                                                            <div><i class="fa fa-check"></i>
-                                                                                   </div>
+                                                                        <a class="book_now" href="javascript:void(0);" onclick="submitBookingForm({{ $key }})">
+                                                                            <div><i class="fa fa-check"></i><span>Book
+                                                                                    Now</span></div>
                                                                         </a>
-                                                                        <a class="whatsapp_now" href=""
-                                                                            target="_blank">
-                                                                            <div><i
-                                                                                    class="fa fa-whatsapp"></i><span>Whatsapp</span>
-                                                                            </div>
-                                                                        </a>
+                                                                        <a class="whatsapp_nows" href="https://api.whatsapp.com/send?phone=442086388185&amp;" target="_blank">
+								                        <div><i class="fa fa-whatsapp"></i><span>Whatsapp</span></div>
+								                    </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+
+
+
+
 
                                                     </div>
                                                 </div>
@@ -401,8 +387,8 @@
                         <h3
                             style="background: #015F9E;margin: 39px 0 0 0;text-align: center;padding: 10px 0;color: #ffffff;">
                             Refine Your Results </h3>
-                        <form autocomplete="off" class="filter-area" name="frmsearch" id="frmsearch" method="post"
-                            action="{{ route('search.online_search') }}">
+                        <form autocomplete="off" class="filter-area" name="frmsearch" id="frmsearch"
+                            action="{{ route('home.maintenance') }}">
                             @csrf
                             <div style="text-align:center;" class="search-col-padding">
                                 <label class="radio-inline return-section">
@@ -597,36 +583,22 @@
                             </li>
                             <li>
                                 <i class="fa fa-check"></i> Dedicated Customer Support - Friendly Staff
-                            </li>
-                            <li>
-                                <i class="fa fa-check"></i> Proven Record Of Over Thousands of Satisfied Customers
-                            </li>
-                            <li class="last">
-                                <i class="fa fa-check"></i> Soft Cancellation Policies and Much More
-                            </li>
-                        </ul>
-                    </div>
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <i class="fa fa-check"></i> Proven Record Of Over Thousands of Satisfied Customers-->
+            <!--                </li>-->
+            <!--                <li class="last">-->
+            <!--                    <i class="fa fa-check"></i> Soft Cancellation Policies and Much More-->
+            <!--                </li>-->
+            <!--            </ul>-->
+            <!--        </div>-->
 
-                </div>
-            </div>
+            <!--    </div>-->
+            <!--</div>-->
         </div>
-        <script>
-        let currentSlide = 0;
-        const carouselItems = document.querySelectorAll('.carousel-item');
-
-        function showSlide(index) {
-          carouselItems.forEach(item => item.classList.remove('active'));
-          carouselItems[index].classList.add('active');
-        }
-
-        function nextSlide() {
-          currentSlide++;
-          if (currentSlide >= carouselItems.length) {
-            currentSlide = 0;
-          }
-          showSlide(currentSlide);
-        }
-        setInterval(nextSlide, 3000);
+<script>
+    function submitBookingForm(formIndex) {
+        document.getElementById("bookingForm" + formIndex).submit();
+    }
 </script>
-
     @endsection

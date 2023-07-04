@@ -5,8 +5,9 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
+Route::get('maintenance',[HomeController::class,'maintenance'])->name('home.maintenance');
 Route::get('cheap-flights',[HomeController::class,'cheap_flights'])->name('home.cheap_flights');
-Route::get('business-class',[HomeController::class,'business_class'])->name('home.business_class');
+Route::get('tours',[HomeController::class,'business_class'])->name('home.business_class');
 Route::get('why-us',[HomeController::class,'why_us'])->name('home.why_us');
 Route::get('booking-conditions',[HomeController::class,'booking_conditions'])->name('home.booking_conditions');
 Route::get('customer-faqs',[HomeController::class,'customer_faqs'])->name('home.customer_faqs');

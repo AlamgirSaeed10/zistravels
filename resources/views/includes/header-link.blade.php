@@ -8,7 +8,7 @@
               <div class="navbar-header">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-5">
                   <a class="navbar-brand logo" href="{{route('home.index')}}"><img
-                      src="{{asset('assets/images/zis_travels.png')}}" alt=""></a>
+                      src="{{asset('assets/images/zis_travels.png')}}" alt="Zistravels logo"></a>
                 </div>
                 <div class="col-lg-3 hidden-sm hidden-xs col-md-2">&nbsp;</div>
                 <div class="col-lg-7 col-md-7 col-sm-8 col-xs-7">
@@ -55,7 +55,7 @@
                     <div class="clearfix"></div>
                   </li>
                   <li class="{{request()->routeIs('home.business_class') ? 'active':'' }}">
-                    <a href="{{route('home.business_class')}}">Business Class</a>
+                    <a href="{{route('home.business_class')}}">Tours</a>
                     <div class="clearfix"></div>
                   </li>
                   <li class="{{request()->routeIs('home.why_us') ? 'active':'' }}">
