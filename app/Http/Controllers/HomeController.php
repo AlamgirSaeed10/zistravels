@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
-
+use App\BloggerClient;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Http\Request;
 use DB;
-use App\BloggerClient;
 
 class HomeController extends Controller
 {
@@ -138,33 +137,33 @@ class HomeController extends Controller
          $validatedData = $request->validate([
             'flight_from' =>'required',
             'flight_to' =>'required',
-            'customer_name' =>'required',
+            // 'customer_name' =>'required',
             'customer_email' =>'required',
             'customer_phone' =>'required',
             'departure_date' =>'required',
             'return_date' =>'required',
-            'g-recaptcha-response' => 'required'
+            // 'g-recaptcha-response' => 'required'
         ], [
             'flight_from.required' => 'Departure City is required.',
             'flight_to.required' => 'Destination city is required.',
             'departure_date.required' => 'Departure Date is required.',
-            'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
+            // 'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
         ]);
 
         }else{
             $validatedData = $request->validate([
             'flight_from' =>'required',
             'flight_to' =>'required',
-            'customer_name' =>'required',
+            // 'customer_name' =>'required',
             'customer_email' =>'required',
             'customer_phone' =>'required',
             'departure_date' =>'required',
-            'g-recaptcha-response' => 'required'
+            // 'g-recaptcha-response' => 'required'
         ], [
             'flight_from.required' => 'Departure City is required.',
             'flight_to.required' => 'Destination city is required.',
             'departure_date.required' => 'Departure Date is required.',
-            'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
+            // 'g-recaptcha-response.required' => 'CAPTCHA answer is required.',
         ]);
         }
 
@@ -189,7 +188,7 @@ class HomeController extends Controller
                 $mail->Body  = "Flight from: {$validatedData['flight_from']}<br>";
                 $mail->Body .= "Flight to: {$validatedData['flight_to']}<br>";
                 $mail->Body .= "Flight Type: {$request->flight_type}<br>";
-                $mail->Body .= "Customer name: {$validatedData['customer_name']}<br>";
+                // $mail->Body .= "Customer name: {$validatedData['customer_name']}<br>";
                 $mail->Body .= "Customer email: {$validatedData['customer_email']}<br>";
                 $mail->Body .= "Customer phone: {$validatedData['customer_phone']}<br>";
                 $mail->Body .= "Departure date: {$validatedData['departure_date']}<br>";
@@ -198,7 +197,7 @@ class HomeController extends Controller
                 }
 
                 $mail->send();
-        $customer_name = $request->customer_name;
+        // $customer_name = $request->customer_name;
         $customer_email = $request->customer_email;
         $customer_phone = $request->customer_phone;
 
@@ -318,7 +317,10 @@ class HomeController extends Controller
         }
 
 
-        return view('pages.search-results', compact('title','flights','flight_from','flight_to','departure','return','cabin_class','flight_type','padult', 'pchild','pinfant','customer_name','customer_email','customer_phone'));
+        return view('pages.search-results', compact('title','flights','flight_from','flight_to','departure','return','cabin_class','flight_type','padult', 'pchild','pinfant',
+        // 'customer_name',
+        'customer_email',
+        'customer_phone'));
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Error occurred while sending the email.'.$e);
         }
@@ -437,7 +439,5 @@ class HomeController extends Controller
         }
 
     }
-
-
 
 }

@@ -189,7 +189,7 @@
      </div>
    </div>
    <div class="row">
-     <div class="col-sm-12 col-md-12 col-lg-3">
+     <div class="col-md-3 col-sm-6 col-xs-6 search-col-padding">
        <label>Flying From</label>
        <div class="input-group">
          <input id="flight-from" name="flight_from" value="London Heathrow - LHR" class="flight-from form-control" type="text">
@@ -198,7 +198,7 @@
          </span>
        </div>
      </div>
-     <div class="col-sm-12 col-md-12 col-lg-3">
+     <div class="col-md-3 col-sm-6 col-xs-6 search-col-padding">
        <label>Flying To</label>
        <div class="input-group">
          <input id="flight-to" name="flight_to" placeholder="Enter your destination" class="flight-to form-control" type="text">
@@ -207,7 +207,7 @@
          </span>
        </div>
      </div>
-     <div class="col-sm-12 col-md-12 col-lg-3">
+     <div class="col-md-3 col-sm-6 col-xs-6 search-col-padding">
            <label>Departure Date</label>
            <div class="input-group">
              <input name="departure_date" type="text" class="form-control" id="departure_date" placeholder="Enter Departure Date">
@@ -216,7 +216,7 @@
              </span>
            </div>
          </div>
-     <div class="col-sm-12 col-md-12 col-lg-3 return-date-selection">
+     <div class="col-md-3 col-sm-6 col-xs-6 search-col-padding return-date-selection">
            <label>Return Date</label>
            <div class="input-group">
              <input name="return_date" type="text" class="form-control" id="return_date" placeholder="Enter Returning Date">
@@ -225,16 +225,16 @@
              </span>
            </div>
          </div>
-     <div class="col-sm-12 col-md-12 col-lg-3">
-       <label>Name *</label>
-       <div class="input-group">
-         <input name="customer_name" type="text" required class="form-control" placeholder="Enter your name">
-         <span class="input-group-addon">
-           <i class="fa fa-user fa-fw"></i>
-         </span>
-       </div>
-     </div>
-     <div class="col-sm-12 col-md-12 col-lg-3">
+     <!--<div class="col-md-3 col-sm-6 col-xs-6 search-col-padding">-->
+     <!--  <label>Name *</label>-->
+     <!--  <div class="input-group">-->
+     <!--    <input name="customer_name" type="text" required class="form-control" placeholder="Enter your name">-->
+     <!--    <span class="input-group-addon">-->
+     <!--      <i class="fa fa-user fa-fw"></i>-->
+     <!--    </span>-->
+     <!--  </div>-->
+     <!--</div>-->
+     <div class="col-md-3 col-sm-6 col-xs-6 search-col-padding">
        <label>Email *</label>
        <div class="input-group">
          <input name="customer_email" type="email" required class="form-control" placeholder="Enter your email">
@@ -243,7 +243,7 @@
          </span>
        </div>
      </div>
-     <div class="col-sm-12 col-md-12 col-lg-3">
+     <div class="col-md-3 col-sm-6 col-xs-6 search-col-padding">
        <label>Phone *</label>
        <div class="input-group">
          <input name="customer_phone" type="text" class="form-control" placeholder="Enter your Phone">
@@ -252,14 +252,13 @@
          </span>
        </div>
      </div>
-     
-     <div class="col-sm-12 col-md-12 col-lg-3" >
+     <div class="col-md-1 col-sm-3 col-xs-12  search-col-padding" >
        <button type="submit" id="searchButton" class="search-button btn transition-effect" style="height:35px !important;">
          <i class="fa fa-search hidden-sm hidden-xs"></i>
          <span class="visible-sm visible-xs">&nbsp;Search</span>
        </button>
      </div>
-     <div class="col-sm-12 col-md-12 col-lg-4" style="float: right; margin-top: 20px;"> {!! htmlFormSnippet() !!} </div>
+     <!--<div class="col-sm-12 col-md-12 col-lg-4" style="float: right; margin-top: 20px;"> {!! htmlFormSnippet() !!} </div>-->
    </div>
  </form>
                                                 
@@ -392,7 +391,7 @@
                 <section id="home-top-destination hidden-sm hidden-xs">
                     <div class="row image-background">
                         <div class="td-overlay">
-                            <div class="container pd-10">
+                            <div class="container">
                                 <div class="light-section-title text-center">
                                     <h1>OUR TOP DESTINATION</h1>
                                     <div class="space"></div>
@@ -407,96 +406,114 @@
                                 <div class="col-md-12 on-top clear-padding">
                                     <div class="col-md-4 col-sm-4 td-product text-center clear-padding wow slideInUp"
                                         data-wow-delay="0.1s">
-                                        <img src="assets/images/destinations/FNA.jpg" alt="Flights Deals To Freetown">
-                                        <div class="overlay">
-                                            <div class="wrapper">
-                                                <h5>Sierra Leone</h5>
-                                                <h3>
-                                                    <span>FABULOUS FREETOWN</span>
-                                                </h3>
-                                                <p>Visiting Freetown this season then call us for the cheapest rates for
-                                                    your
-                                                    flights.</p>
-                                                <a href="{{route('home.contact_us')}}">BOOK NOW</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{route('home.contact_us')}}">
+                                        <img src="{{asset('public/assets/images/destinations/FNA.png')}}" alt="Flights Deals To Freetown">
+                                        </a>
+                                        
+                                        <!--<div class="overlay">-->
+                                        <!--    <div class="wrapper">-->
+                                        <!--        <h5>Sierra Leone</h5>-->
+                                        <!--        <h3>-->
+                                        <!--            <span>FABULOUS FREETOWN</span>-->
+                                        <!--        </h3>-->
+                                        <!--        <p>Visiting Freetown this season then call us for the cheapest rates for-->
+                                        <!--            your-->
+                                        <!--            flights.</p>-->
+                                        <!--        <a href="{{route('home.contact_us')}}">BOOK NOW</a>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="col-md-4 col-sm-4 td-product text-center clear-padding wow slideInUp"
                                         data-wow-delay="0.1s">
-                                        <img src="assets/images/destinations/HRE.jpg" alt="Flights Deals To Harare">
-                                        <div class="overlay">
-                                            <div class="wrapper">
-                                                <h5>Zimbabwe</h5>
-                                                <h3>
-                                                    <span>REMARKABLE HARARE</span>
-                                                </h3>
-                                                <p>Plan to visit Harare this season ? Grab the best deals on flights to
-                                                    Zimbabwe.
-                                                </p>
-                                                <a href="{{route('home.contact_us')}}">BOOK NOW</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{route('home.contact_us')}}">
+                                        <img src="{{asset('public/assets/images/destinations/SGP.png')}}" alt="Flights Deals To Signapore">
+                                        </a>
+                                        
+                                        <!--<div class="overlay">-->
+                                        <!--    <div class="wrapper">-->
+                                        <!--        <h5>Zimbabwe</h5>-->
+                                        <!--        <h3>-->
+                                        <!--            <span>REMARKABLE HARARE</span>-->
+                                        <!--        </h3>-->
+                                        <!--        <p>Plan to visit Harare this season ? Grab the best deals on flights to-->
+                                        <!--            Zimbabwe.-->
+                                        <!--        </p>-->
+                                        <!--        <a href="{{route('home.contact_us')}}">BOOK NOW</a>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="col-md-4 col-sm-4 td-product text-center clear-padding wow slideInUp"
                                         data-wow-delay="0.1s">
-                                        <img src="assets/images/destinations/MRU.jpg" alt="Flights Deals To Mauritius">
-                                        <div class="overlay">
-                                            <div class="wrapper">
-                                                <h5>Mauritius</h5>
-                                                <h3>
-                                                    <span>MAJESTIC MAURITIUS</span>
-                                                </h3>
-                                                <p>Traveling to Mauritius was never so cheap! Grab the best flight rates to
-                                                    Mauritius with us.</p>
-                                                <a href="{{route('home.contact_us')}}-Louis">BOOK NOW</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{route('home.contact_us')}}">
+                                        <img src="{{asset('public/assets/images/destinations/MRT.png')}}" alt="Flights Deals To Mauritius">
+                                        </a>
+                                        
+                                        <!--<div class="overlay">-->
+                                        <!--    <div class="wrapper">-->
+                                        <!--        <h5>Mauritius</h5>-->
+                                        <!--        <h3>-->
+                                        <!--            <span>MAJESTIC MAURITIUS</span>-->
+                                        <!--        </h3>-->
+                                        <!--        <p>Traveling to Mauritius was never so cheap! Grab the best flight rates to-->
+                                        <!--            Mauritius with us.</p>-->
+                                        <!--        <a href="{{route('home.contact_us')}}-Louis">BOOK NOW</a>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="col-md-4 col-sm-4 td-product text-center clear-padding wow slideInUp"
                                         data-wow-delay="0.1s">
-                                        <img src="assets/images/destinations/NBO.jpg" alt="Flights Deals To Bangkok">
-                                        <div class="overlay">
-                                            <div class="wrapper">
-                                                <h5>Thailand</h5>
-                                                <h3>
-                                                    <span>BUOYANT BANGKOK</span>
-                                                </h3>
-                                                <p>One of the beautiful cities of Asia; we're offering the lowest rates on
-                                                    Bangkok
-                                                    flights.</p>
-                                                <a href="{{route('home.contact_us')}}">BOOK NOW</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{route('home.contact_us')}}">
+                                        <img src="{{asset('public/assets/images/destinations/THL.png')}}" alt="Flights Deals To thiland">
+                                        </a>
+                                        
+                                        <!--<div class="overlay">-->
+                                        <!--    <div class="wrapper">-->
+                                        <!--        <h5>Thailand</h5>-->
+                                        <!--        <h3>-->
+                                        <!--            <span>BUOYANT BANGKOK</span>-->
+                                        <!--        </h3>-->
+                                        <!--        <p>One of the beautiful cities of Asia; we're offering the lowest rates on-->
+                                        <!--            Bangkok-->
+                                        <!--            flights.</p>-->
+                                        <!--        <a href="{{route('home.contact_us')}}">BOOK NOW</a>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="col-md-4 col-sm-4 td-product text-center clear-padding wow slideInUp"
                                         data-wow-delay="0.1s">
-                                        <img src="assets/images/destinations/LOS.jpg" alt="Flights Deals To Lagos">
-                                        <div class="overlay">
-                                            <div class="wrapper">
-                                                <h5>Nigeria</h5>
-                                                <h3>
-                                                    <span>LIVELY LAGOS</span>
-                                                </h3>
-                                                <p>Visiting Lagos was never so affordable before. Book your cheap flights to
-                                                    Nigeria
-                                                    with us.</p>
-                                                <a href="{{route('home.contact_us')}}">BOOK NOW</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{route('home.contact_us')}}">
+                                        <img src="{{asset('public/assets/images/destinations/ZBW.png')}}" alt="Flights Deals To Zimbabwe">
+                                        </a>
+                                        
+                                        <!--<div class="overlay">-->
+                                        <!--    <div class="wrapper">-->
+                                        <!--        <h5>Nigeria</h5>-->
+                                        <!--        <h3>-->
+                                        <!--            <span>LIVELY LAGOS</span>-->
+                                        <!--        </h3>-->
+                                        <!--        <p>Visiting Lagos was never so affordable before. Book your cheap flights to-->
+                                        <!--            Nigeria-->
+                                        <!--            with us.</p>-->
+                                        <!--        <a href="{{route('home.contact_us')}}">BOOK NOW</a>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="col-md-4 col-sm-4 td-product text-center clear-padding wow slideInUp"
                                         data-wow-delay="0.1s">
-                                        <img src="assets/images/destinations/SIN.jpg" alt="Flights Deals To Singapore">
-                                        <div class="overlay">
-                                            <div class="wrapper">
-                                                <h5>Singapore</h5>
-                                                <h3>
-                                                    <span>SENSATIONAL SINGAPORE</span>
-                                                </h3>
-                                                <p>Grab the best fare deals to Singapore - the Asian hub of modernism.</p>
-                                                <a href="{{route('home.contact_us')}}">BOOK NOW</a>
-                                            </div>
-                                        </div>
+                                        <a href="{{route('home.contact_us')}}">
+                                        <img src="{{asset('public/assets/images/destinations/NGA.png')}}" alt="Flights Deals To Nigeria">
+                                        </a>
+                                        
+                                        <!--<div class="overlay">-->
+                                        <!--    <div class="wrapper">-->
+                                        <!--        <h5>Singapore</h5>-->
+                                        <!--        <h3>-->
+                                        <!--            <span>SENSATIONAL SINGAPORE</span>-->
+                                        <!--        </h3>-->
+                                        <!--        <p>Grab the best fare deals to Singapore - the Asian hub of modernism.</p>-->
+                                        <!--        <a href="{{route('home.contact_us')}}">BOOK NOW</a>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="clearfix visible-md-block"></div>
                                 </div>

@@ -5,25 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca955e22-f35f-4915-9605-749e00ee3f58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tour/qatar/qatar-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tour/qatar/qatar-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tour/qatar/qatar-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tour/qatar/qatar-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/tour/qatar/qatar-5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/blade.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_6_2_23__8_13_PM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/destinations/FNA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/destinations/MRT.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/destinations/NGA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/destinations/SGP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/destinations/THL.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/destinations/ZBW.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/zistravels.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/zistravels.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/business-class.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/business-class.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/blogs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/blogs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" notifyAboutMissingVendor="false" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -146,6 +149,16 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/vendor/revolution/laravel-google-sheets" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/hepplerdotnet/flash-toastr" />
     </include_path>
   </component>
   <component name="ProjectId" id="2ReoHr6vxemDANO0BpXmt715Djw" />
@@ -164,7 +177,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/xampp/htdocs/ecom",
+    "last_opened_file_path": "C:/xampp/htdocs/ZIS-TRAVELS/zistravels/public/assets/images/destinations",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -174,6 +187,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ZIS-TRAVELS\zistravels\public\assets\images\destinations" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -192,6 +210,9 @@
       <workItem from="1687620228371" duration="991000" />
       <workItem from="1687621232130" duration="3592000" />
       <workItem from="1687767246448" duration="81000" />
+      <workItem from="1688484271237" duration="2996000" />
+      <workItem from="1688549012878" duration="63000" />
+      <workItem from="1689429684356" duration="536000" />
     </task>
     <servers />
   </component>
